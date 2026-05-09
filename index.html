@@ -637,6 +637,7 @@ footer .footer-divider { margin: .75rem 0; border: none; border-top: 1px solid r
     <button class="tab-btn" onclick="showTab('agridigital', this)">🌾 AgriDigital</button>
     <button class="tab-btn" onclick="showTab('metodologie', this)">🔍 Metodologie</button>
     <button class="tab-btn" onclick="showTab('legale', this)">⚖️ Aspetti Legali</button>
+    <button class="tab-btn" onclick="showTab('casireali', this)">🚨 Casi Reali</button>
     <button class="tab-btn" onclick="showTab('glossario', this)">📖 Glossario</button>
   </div>
 </div>
@@ -663,7 +664,7 @@ footer .footer-divider { margin: .75rem 0; border: none; border-top: 1px solid r
   <!-- Stats -->
   <div class="stats-row">
     <div class="stat-badge"><div class="stat-num">33</div><div class="stat-label">ore obbligatorie per anno<br><em>mandatory hours per year</em></div></div>
-    <div class="stat-badge"><div class="stat-num">5</div><div class="stat-label">aree DigComp 2.2<br><em>DigComp 2.2 areas</em></div></div>
+    <div class="stat-badge"><div class="stat-num">5</div><div class="stat-label">aree DigComp 3.0<br><em>DigComp 3.0 areas</em></div></div>
     <div class="stat-badge"><div class="stat-num">3</div><div class="stat-label">pilastri Educ. Civica<br><em>Civic Education pillars</em></div></div>
     <div class="stat-badge"><div class="stat-num">L.92</div><div class="stat-label">Legge 2019 · Art. 5<br><em>Law on Digital Citizenship</em></div></div>
     <div class="stat-badge"><div class="stat-num">GDPR</div><div class="stat-label">Regolamento UE Privacy<br><em>EU Data Protection Reg.</em></div></div>
@@ -749,52 +750,67 @@ footer .footer-divider { margin: .75rem 0; border: none; border-top: 1px solid r
 <div id="tab-framework" class="tab-content">
 <div class="container">
 
-  <div class="section-title"><span class="section-icon">🇪🇺</span><h2>DigComp 2.2 — Il Framework Europeo</h2></div>
+  <div class="section-title"><span class="section-icon">🇪🇺</span><h2>DigComp 3.0 — Il Framework Europeo</h2></div>
 
   <div class="bilingual-block">
     <div class="lang-it">
       <div class="lang-label"><span class="lang-flag">🇮🇹</span> Italiano</div>
-      <p>Il Ministero adotta come riferimento il <strong>Quadro delle Competenze Digitali per i Cittadini (DigComp 2.2)</strong>, che struttura le competenze in cinque aree, declinando gli indicatori di prestazione per la maturità scolastica.</p>
+      <p>Il Ministero adotta come riferimento il <strong>Quadro delle Competenze Digitali per i Cittadini (DigComp 3.0)</strong> — quinta edizione del framework europeo, pubblicata il 27 marzo 2026. Struttura le competenze in cinque aree e integra in modo sistematico e trasversale le <strong>competenze relative all'intelligenza artificiale (IA)</strong>, con una nuova sezione dedicata ai risultati di apprendimento.</p>
     </div>
     <div class="lang-en">
       <div class="lang-label"><span class="lang-flag">🇬🇧</span> English</div>
-      <p>The Ministry adopts the <strong>Digital Competence Framework for Citizens (DigComp 2.2)</strong> as its reference, structuring competences in five areas and defining performance indicators for upper-secondary school completion.</p>
+      <p>The Ministry adopts the <strong>Digital Competence Framework for Citizens (DigComp 3.0)</strong> as its reference — the fifth edition of the European framework, published on 27 March 2026. It structures competences in five areas and systematically integrates <strong>Artificial Intelligence (AI) competences</strong> throughout, with a new dedicated section on learning outcomes.</p>
+    </div>
+  </div>
+
+  <div class="callout callout-blue" style="margin-bottom:1rem">
+    <div class="callout-title">🤖 Novità DigComp 3.0 rispetto al 2.2</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;margin-top:.5rem;font-size:.85rem">
+      <div>✅ <strong>Competenze IA integrate</strong> sistematicamente in tutte e 5 le aree (non più aggiuntive)<br><em>AI competences integrated across all 5 areas</em></div>
+      <div>✅ <strong>Nuova sezione</strong> sui risultati di apprendimento per applicazione più granulare<br><em>New learning outcomes section for granular application</em></div>
+      <div>✅ Aggiornamento agli sviluppi digitali <strong>dal 2022 in poi</strong>: deepfake, modelli generativi, sorveglianza algoritmica<br><em>Updated to digital developments from 2022 onwards</em></div>
+      <div>✅ Supporto esplicito a <em>AI Continent Action Plan</em> e <em>Better Internet for Kids</em><br><em>Explicit support for EU AI and kids safety strategies</em></div>
     </div>
   </div>
 
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Area DigComp 2.2</th><th>Descrittori (IT)</th><th>Descriptors (EN)</th><th>🌾 Contesto Agrario / Agricultural Context</th></tr></thead>
+      <thead><tr><th>Area DigComp 3.0</th><th>Descrittori (IT)</th><th>Descriptors (EN)</th><th>🌾 Contesto Agrario / Agricultural Context</th><th>🤖 Novità IA / AI Update</th></tr></thead>
       <tbody>
         <tr>
           <td class="td-bold">Area 1<br>Alfabetizzazione su<br>Informazioni e Dati</td>
           <td>Navigare, cercare, filtrare, valutare e gestire dati e informazioni digitali.</td>
           <td>Browse, search, filter, evaluate, and manage digital data and information.</td>
           <td>Valutare fonti scientifiche agrarie; analizzare dati meteo/PAC/prezzi di mercato.</td>
+          <td>Riconoscere contenuti generati da IA; valutare l'affidabilità di dati prodotti da sistemi algoritmici.</td>
         </tr>
         <tr>
           <td class="td-bold">Area 2<br>Comunicazione e<br>Collaborazione</td>
           <td>Interagire, condividere, partecipare alla cittadinanza online in modo responsabile.</td>
           <td>Interact, share, engage in responsible online citizenship.</td>
           <td>Partecipare a reti professionali agricole, evitare la diffusione di agrifake.</td>
+          <td>Distinguere contenuti comunicativi autentici da quelli generati da bot o IA generativa.</td>
         </tr>
         <tr>
           <td class="td-bold">Area 3<br>Creazione di<br>Contenuti Digitali</td>
           <td>Sviluppare, integrare e rielaborare contenuti digitali complessi; rispettare copyright e licenze.</td>
           <td>Develop, integrate, re-elaborate complex digital content; respect copyright and licences.</td>
           <td>Produrre report agronomici, pubblicare contenuti divulgativi corretti, rispettare la proprietà intellettuale.</td>
+          <td>Utilizzare strumenti IA generativa responsabilmente; comprendere le implicazioni etiche e di copyright dei contenuti prodotti con IA.</td>
         </tr>
         <tr>
           <td class="td-bold">Area 4<br>Sicurezza</td>
           <td>Proteggere dispositivi, dati personali, privacy. Essere consapevoli dell'impatto ambientale del digitale.</td>
           <td>Protect devices, personal data, privacy. Be aware of the environmental impact of digital technology.</td>
           <td>Mettere in sicurezza dati aziendali (IoT, agricoltura di precisione). Comprendere l'inquinamento digitale.</td>
+          <td>Comprendere i rischi legati alla sorveglianza algoritmica e alla profilazione IA; proteggere i propri dati da sistemi automatizzati.</td>
         </tr>
         <tr>
           <td class="td-bold">Area 5<br>Risolvere Problemi</td>
           <td>Identificare esigenze, risolvere problemi tecnici, usare strumenti digitali in modo innovativo.</td>
           <td>Identify needs, solve technical problems, use digital tools innovatively.</td>
           <td>Diagnosticare anomalie nei software agricoli, adottare IA per ottimizzare risorse idriche.</td>
+          <td>Valutare criticamente le soluzioni IA proposte da sistemi di supporto decisionale in agricoltura di precisione; colmare i divari di competenza.</td>
         </tr>
       </tbody>
     </table>
@@ -802,7 +818,7 @@ footer .footer-divider { margin: .75rem 0; border: none; border-top: 1px solid r
 
   <div class="card-grid">
     <div class="chart-container">
-      <div class="chart-title">Aree DigComp 2.2 — Livello di Priorità per l'Istituto Agrario</div>
+      <div class="chart-title">Aree DigComp 3.0 — Livello di Priorità per l'Istituto Agrario</div>
       <div class="chart-wrap"><canvas id="chartDigcomp"></canvas></div>
     </div>
     <div>
@@ -833,8 +849,9 @@ footer .footer-divider { margin: .75rem 0; border: none; border-top: 1px solid r
         <tr><td class="td-bold">2008</td><td>Vertice UNESCO a Parigi: nasce il framework MIL (Media and Information Literacy).</td><td>UNESCO Summit in Paris: the MIL (Media and Information Literacy) framework is born.</td></tr>
         <tr><td class="td-bold">2019</td><td>Legge 92/2019: l'Educazione Civica diventa materia curricolare obbligatoria (33h/anno).</td><td>Law 92/2019: Civic Education becomes a mandatory curricular subject (33h/year).</td></tr>
         <tr><td class="td-bold">2020</td><td>DigComp 2.1 implementato nei curricoli italiani.</td><td>DigComp 2.1 implemented in Italian curricula.</td></tr>
-        <tr><td class="td-bold">2022</td><td>DigComp 2.2: versione aggiornata con focus su IA, deepfake e sostenibilità digitale.</td><td>DigComp 2.2: updated version focusing on AI, deepfakes and digital sustainability.</td></tr>
-        <tr><td class="td-bold">2024/25</td><td>Nuove Linee Guida MIUR: curricoli obbligatoriamente allineati ai traguardi nazionali aggiornati.</td><td>New MIUR Guidelines: curricula mandatorily aligned with updated national learning goals.</td></tr>
+        <tr><td class="td-bold">2022</td><td>DigComp 2.2: versione aggiornata con focus su deepfake, sostenibilità digitale e indicatori di prestazione per la scuola.</td><td>DigComp 2.2: updated version focusing on deepfakes, digital sustainability and school performance indicators.</td></tr>
+        <tr><td class="td-bold" style="color:var(--amber)">2026 🆕</td><td><strong>DigComp 3.0</strong> (quinta edizione): pubblicato il 27 marzo 2026. Integrazione sistematica delle competenze IA in tutte le aree, nuova sezione risultati di apprendimento, aggiornamento agli sviluppi tecnologici dal 2022 in poi. Framework neutrale rispetto alla tecnologia, orientato a istruzione, formazione e lavoro.</td><td><strong>DigComp 3.0</strong> (fifth edition): published 27 March 2026. Systematic AI competence integration across all areas, new learning outcomes section, updated to technological developments from 2022 onwards. Technology-neutral framework oriented to education, training and employment.</td></tr>
+        <tr><td class="td-bold">2025/26</td><td>Nuove Linee Guida MIUR: curricoli obbligatoriamente allineati ai traguardi nazionali aggiornati. DigComp 3.0 adottato come riferimento.</td><td>New MIUR Guidelines: curricula mandatorily aligned with updated national learning goals. DigComp 3.0 adopted as the reference framework.</td></tr>
       </tbody>
     </table>
   </div>
@@ -1385,7 +1402,347 @@ footer .footer-divider { margin: .75rem 0; border: none; border-top: 1px solid r
 </div>
 </div><!-- end tab-legale -->
 
-<!-- ==================== TAB 7: GLOSSARIO ==================== -->
+<!-- ==================== TAB: CASI REALI ==================== -->
+<div id="tab-casireali" class="tab-content">
+<div class="container">
+
+  <div class="hero-section" style="background:linear-gradient(135deg,#ffebee 0%,#fff3e0 50%,#e8f5e9 100%)">
+    <h2>🚨 Casi Reali — Quando il Digitale Fa Male</h2>
+    <p class="hero-tagline">Storie vere, italiane e internazionali, per capire concretamente a cosa si può andare incontro. Nomi, date, conseguenze — perché l'educazione digitale funziona solo se è ancorata alla realtà.</p>
+    <div class="bilingual-block" style="margin-top:1.2rem">
+      <div class="lang-it"><div class="lang-label"><span class="lang-flag">🇮🇹</span> Italiano</div><p>Questi casi non sono eccezioni. Accadono ogni giorno, in Italia e nel mondo. Conoscerli è il primo passo per non ripeterli — come vittime o come autori inconsapevoli.</p></div>
+      <div class="lang-en"><div class="lang-label"><span class="lang-flag">🇬🇧</span> English</div><p>These cases are not exceptions. They happen every day, in Italy and worldwide. Knowing them is the first step to not repeating them — as victims or as unwitting perpetrators.</p></div>
+    </div>
+  </div>
+
+  <!-- ===== CATEGORIA 1: CYBERBULLISMO ===== -->
+  <div class="section-title"><span class="section-icon">💔</span><h2>Cyberbullismo &amp; Revenge Porn — Vite Spezzate Online</h2></div>
+
+  <div class="card-grid">
+
+    <div class="card" style="border-top:4px solid #c62828">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🇮🇹</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#c62828">Il caso Carolina Picchio</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Italia · Novara · 2013</div>
+        </div>
+        <span class="tag tag-red" style="margin-left:auto">Cyberbullismo</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> Carolina, 14 anni, fu filmata di nascosto a una festa e il video — in cui appariva in stato confusionale — fu diffuso su WhatsApp e Facebook da ex compagni di scuola. Per settimane subì insulti, commenti degradanti e umiliazioni pubbliche. Il 5 gennaio 2013 si tolse la vita. Sul computer lasciò aperta la pagina Facebook con gli ultimi insulti ricevuti.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> Carolina, 14, was secretly filmed at a party and the video was shared on WhatsApp and Facebook by former classmates. For weeks she suffered insults and public humiliation. On 5 January 2013 she took her own life, leaving her Facebook page open with the last insults she had received.</p>
+      <div class="callout callout-green" style="margin-top:.75rem">
+        <div class="callout-title">📋 Conseguenza storica</div>
+        <p style="font-size:.83rem">Il suo caso ha portato direttamente alla promulgazione della <strong>Legge 71/2017 sul Cyberbullismo</strong> — la prima legge organica italiana dedicata al fenomeno. Il padre di Carolina ha partecipato attivamente alla campagna di sensibilizzazione nelle scuole.</p>
+        <p style="font-size:.79rem;color:var(--text-muted);font-style:italic">Her case directly led to <strong>Law 71/2017 on Cyberbullying</strong> — Italy's first comprehensive law on the phenomenon.</p>
+      </div>
+    </div>
+
+    <div class="card" style="border-top:4px solid #c62828">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🇨🇦</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#c62828">Il caso Amanda Todd</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Canada · British Columbia · 2012</div>
+        </div>
+        <span class="tag tag-red" style="margin-left:auto">Sextortion</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> Amanda, 15 anni, fu convinta a spogliarsi su una webcam da un adulto che si fingeva coetaneo. L'immagine fu usata per ricattarla (<em>sextortion</em>) e diffusa a tutti i suoi contatti e alla sua scuola. Dopo anni di cyberbullismo, isolamento e depressione, si tolse la vita nell'ottobre 2012. Aveva pubblicato su YouTube un video-denuncia con cartelli scritti a mano che descrisse la sua storia.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> Amanda, 15, was convinced to undress on a webcam by an adult posing as a peer. The image was used to blackmail her (<em>sextortion</em>) and distributed to all her contacts and school. After years of cyberbullying and depression, she took her own life in October 2012.</p>
+      <div class="callout callout-amber" style="margin-top:.75rem">
+        <div class="callout-title">⚠️ Lezione chiave / Key lesson</div>
+        <p style="font-size:.83rem">Un contenuto intimo inviato <em>una volta</em> può girare per sempre. La sextortion colpisce soprattutto i minori tramite profili falsi. <strong>Non esiste "sparire da internet".</strong></p>
+        <p style="font-size:.79rem;color:var(--text-muted);font-style:italic">An intimate image sent <em>once</em> can circulate forever. Sextortion targets minors through fake profiles. <strong>There is no "disappearing from the internet".</strong></p>
+      </div>
+    </div>
+
+    <div class="card" style="border-top:4px solid #c62828">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🇮🇹</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#c62828">Il caso Tiziana Cantone</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Italia · Napoli · 2016</div>
+        </div>
+        <span class="tag tag-red" style="margin-left:auto">Revenge Porn</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> Tiziana, 33 anni, inviò video intimi a cinque persone di fiducia. I video vennero diffusi senza il suo consenso, diventando virali su scala nazionale. Diventò oggetto di meme e battute. Cercò per anni di far rimuovere i contenuti dai tribunali — senza successo — arrivando perfino a cambiare nome legalmente. Si tolse la vita nel settembre 2016.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> Tiziana, 33, sent intimate videos to five trusted people. The videos were shared without her consent, going viral nationwide. She tried for years to have them removed through the courts — without success — even legally changing her name. She took her own life in September 2016.</p>
+      <div class="callout callout-green" style="margin-top:.75rem">
+        <div class="callout-title">📋 Conseguenza legale</div>
+        <p style="font-size:.83rem">Il suo caso accelerò l'introduzione dell'<strong>Art. 612-ter c.p.</strong> (revenge porn come reato autonomo, 2019): fino a 6 anni di reclusione per chi diffonde immagini intime senza consenso.</p>
+        <p style="font-size:.79rem;color:var(--text-muted);font-style:italic">Her case accelerated the introduction of <strong>Art. 612-ter Penal Code</strong> (revenge porn as an autonomous offence, 2019): up to 6 years in prison.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== CATEGORIA 2: DEEPFAKE & IA ===== -->
+  <div class="section-title"><span class="section-icon">🤖</span><h2>Deepfake &amp; Frodi con l'Intelligenza Artificiale</h2></div>
+
+  <div class="card-grid">
+
+    <div class="card" style="border-top:4px solid #1565c0">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🇬🇧</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#1565c0">La voce clonata del CEO</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Regno Unito · 2019 · Prima frode deepfake audio documentata</div>
+        </div>
+        <span class="tag tag-blue" style="margin-left:auto">Deepfake</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> Il CEO di una società energetica britannica ricevette una telefonata da quella che credeva essere la voce del CEO della casa madre tedesca — clonata con IA — che gli ordinava un trasferimento urgente di <strong>220.000 euro</strong> a un fornitore ungherese. Convinto dall'intonazione, dall'accento e dall'inflessione perfetti, effettuò il bonifico. I soldi sparirono. Nessuno fu mai arrestato.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> The CEO of a British energy company received a call from what he believed was the AI-cloned voice of his parent company's German CEO, ordering an urgent transfer of <strong>€220,000</strong>. Convinced by the perfect tone and accent, he made the transfer. The money disappeared. No one was ever arrested.</p>
+      <div class="callout callout-blue" style="margin-top:.75rem">
+        <div class="callout-title">🎯 Implicazione per l'agricoltura</div>
+        <p style="font-size:.83rem">Le aziende agroalimentari e le cooperative agricole sono bersagli ideali per frodi di questo tipo, spesso con trasferimenti legati ad acquisti di macchinari, sementi o commodities. <strong>Verificare sempre con una seconda chiamata su numero conosciuto.</strong></p>
+      </div>
+    </div>
+
+    <div class="card" style="border-top:4px solid #1565c0">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🌍</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#1565c0">Deepfake di Elon Musk — Truffe Crypto</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Internazionale · 2020–2024 · Milioni di vittime</div>
+        </div>
+        <span class="tag tag-blue" style="margin-left:auto">Frode Crypto</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> Per anni, video deepfake di Elon Musk e di altri CEO hanno promosso falsi "giveaway" di criptovalute: "Invia 1 Bitcoin e ne riceverai 2 in cambio". Solo nel 2020, una di queste campagne (l'hack dei profili Twitter di Obama, Apple, Musk, Biden) ha fruttato agli hacker oltre <strong>100.000 dollari in Bitcoin</strong> in poche ore. I video deepfake di Musk che promuovono investimenti crypto falsi hanno truffato milioni di persone, con perdite stimate in centinaia di milioni di dollari a livello globale.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> For years, deepfake videos of Elon Musk and other CEOs promoted fake crypto "giveaways". The 2020 Twitter hack of Obama, Apple, Musk and Biden profiles alone netted hackers over <strong>$100,000 in Bitcoin</strong> in hours. Deepfake videos promoted fake investments defrauding millions globally.</p>
+    </div>
+
+    <div class="card" style="border-top:4px solid #1565c0">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🇮🇹</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#1565c0">Deepfake di politici italiani (2023–2024)</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Italia · 2023–2024</div>
+        </div>
+        <span class="tag tag-blue" style="margin-left:auto">Disinformazione</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> Video deepfake di Giorgia Meloni, Roberto Speranza e altri esponenti politici italiani sono circolati sui social media con discorsi e dichiarazioni mai pronunciati. Alcuni video sono stati usati per promuovere truffe di investimento; altri per diffondere disinformazione politica. Il Garante per la Protezione dei Dati ha aperto istruttorie. Il Parlamento ha discusso una legge specifica sui deepfake (non ancora approvata al 2025/26).</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> Deepfake videos of Italian politicians circulated on social media with statements they never made — some used to promote investment scams, others to spread political disinformation. The Data Protection Authority opened investigations.</p>
+    </div>
+
+  </div>
+
+  <!-- ===== CATEGORIA 3: FRODI ONLINE & PHISHING ===== -->
+  <div class="section-title"><span class="section-icon">🎣</span><h2>Frodi Online, Phishing &amp; Truffe Digitali</h2></div>
+
+  <div class="card-grid">
+
+    <div class="card" style="border-top:4px solid #f57c00">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🇮🇹</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#f57c00">La truffa "Nonno, sono io" (WhatsApp)</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Italia · 2020–oggi · Migliaia di vittime anziane</div>
+        </div>
+        <span class="tag tag-amber" style="margin-left:auto">Social Engineering</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> Un anziano riceve un messaggio WhatsApp da un numero sconosciuto: "Nonno/a, sono io! Ho cambiato numero, ho avuto un incidente/sono nei guai, ho urgente bisogno di soldi — non dirlo a nessuno." Sfruttando l'<strong>ingegneria sociale</strong> (urgenza, paura, affetto familiare, richiesta di segretezza) la vittima trasferisce centinaia o migliaia di euro. In Italia le denunce sono migliaia ogni anno, con vittime principalmente over 65. Il Commissariato di PS online ha dedicato campagne specifiche.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> An elderly person receives a WhatsApp message from an unknown number: "Grandpa/ma, it's me! I changed number, I'm in trouble, I urgently need money — don't tell anyone." Exploiting <strong>social engineering</strong> (urgency, fear, family affection, secrecy), the victim transfers hundreds or thousands of euros.</p>
+      <div class="callout callout-amber" style="margin-top:.75rem">
+        <div class="callout-title">🧠 Tecniche di manipolazione usate</div>
+        <p style="font-size:.83rem">Urgenza artificiale · Leva affettiva familiare · Richiesta di segretezza · Isolamento della vittima da altri familiari — le stesse tecniche del <strong>prebunking</strong> che studiamo in classe!</p>
+      </div>
+    </div>
+
+    <div class="card" style="border-top:4px solid #f57c00">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🇮🇹</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#f57c00">Truffa del "falso tecnico INPS/Poste"</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Italia · Fenomeno diffusissimo · 2021–oggi</div>
+        </div>
+        <span class="tag tag-amber" style="margin-left:auto">Phishing / Vishing</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> Chiamata telefonica o SMS che simula l'INPS, Poste Italiane, o la propria banca: "Il suo conto è stato bloccato / è in corso una transazione sospetta". La vittima viene guidata a fornire codici OTP, dati del conto o a installare app di controllo remoto. La Polizia Postale italiana registra ogni anno decine di migliaia di casi con danni per centinaia di milioni di euro. Nel 2022 un'operazione ha smantellato una rete che aveva sottratto <strong>oltre 10 milioni di euro</strong> a cittadini italiani.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> Phone call or SMS simulating INPS, Poste Italiane or a bank: "Your account has been blocked." The victim is guided to provide OTP codes or install remote control apps. Italian Postal Police records tens of thousands of cases annually, with damages in the hundreds of millions.</p>
+    </div>
+
+    <div class="card" style="border-top:4px solid #f57c00">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🌍</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#f57c00">Ashley Madison Data Breach</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Internazionale · 2015 · 37 milioni di iscritti esposti</div>
+        </div>
+        <span class="tag tag-amber" style="margin-left:auto">Data Breach + Ricatto</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> Hacker pubblicarono online i dati di <strong>37 milioni di utenti</strong> del sito di incontri Ashley Madison (nomi, email, dati bancari, preferenze sessuali). Seguirono ondate di <strong>ricatto digitale</strong> — email ai partner, ai datori di lavoro, ai familiari delle vittime. Furono documentati almeno due suicidi direttamente collegati all'esposizione. Il caso dimostrò che "nessun sistema è sicuro" e che i <strong>dati personali ceduti online restano vulnerabili per sempre</strong>.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> Hackers published data of <strong>37 million users</strong> (names, emails, banking data, sexual preferences). Waves of <strong>digital blackmail</strong> followed. At least two suicides were documented. The case proved that <strong>personal data surrendered online remains vulnerable forever</strong>.</p>
+    </div>
+
+  </div>
+
+  <!-- ===== CATEGORIA 4: CAMBRIDGE ANALYTICA & MANIPOLAZIONE ===== -->
+  <div class="section-title"><span class="section-icon">🗳️</span><h2>Manipolazione di Massa &amp; Dati Personali</h2></div>
+
+  <div class="card-grid">
+
+    <div class="card" style="border-top:4px solid #4527a0">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🌍</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#4527a0">Cambridge Analytica</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">USA / UK · 2018 · 87 milioni di profili Facebook</div>
+        </div>
+        <span class="tag tag-blue" style="margin-left:auto">Profilazione</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> La società Cambridge Analytica raccolse — senza consenso esplicito — i dati psicologici e comportamentali di <strong>87 milioni di utenti Facebook</strong> tramite un quiz apparentemente innocuo. Questi dati furono usati per costruire profili psicologici precisi (<em>psychographic profiling</em>) e inviare pubblicità politica ultra-personalizzata. La tecnica fu applicata alla <strong>campagna presidenziale di Donald Trump (2016)</strong> e al <strong>referendum Brexit</strong>. Il fondatore di Facebook Mark Zuckerberg fu convocato davanti al Congresso USA e al Parlamento Europeo.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> Cambridge Analytica collected — without explicit consent — the psychological and behavioural data of <strong>87 million Facebook users</strong> through an apparently innocent quiz. The data was used to build precise psychological profiles and send ultra-personalised political advertising, applied to <strong>Trump's 2016 campaign</strong> and <strong>Brexit</strong>.</p>
+      <div class="callout callout-red" style="margin-top:.75rem">
+        <div class="callout-title">⚠️ La lezione più importante / The most important lesson</div>
+        <p style="font-size:.83rem">Quando un servizio online è gratuito, il prodotto sei <strong>tu</strong> — i tuoi dati, le tue paure, i tuoi desideri, i tuoi bias. I tuoi like e i tuoi scroll raccontano la tua psicologia meglio di quanto tu stesso la conosca.</p>
+        <p style="font-size:.79rem;color:var(--text-muted);font-style:italic">When an online service is free, the product is <strong>you</strong> — your data, fears, desires, biases. Your likes and scrolls reveal your psychology better than you know yourself.</p>
+      </div>
+    </div>
+
+    <div class="card" style="border-top:4px solid #4527a0">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🌍</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#4527a0">Il video "Plandemia" (COVID-19)</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Internazionale · 2020 · Oltre 8 milioni di visualizzazioni</div>
+        </div>
+        <span class="tag tag-red" style="margin-left:auto">Disinfo + Agrifake</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> Nel maggio 2020, un video di 26 minuti intitolato "Plandemic" con interviste a un ex ricercatrice (licenziata per cattiva condotta scientifica) raggiunse <strong>8 milioni di visualizzazioni in una settimana</strong> prima di essere rimosso. Il video affermava che il virus era stato creato in laboratorio, che i vaccini avrebbero "attivato il virus", e che le mascherine causavano malattie. Ogni singola affermazione fu smentita da oltre 50 studi peer-reviewed. Il caso dimostrò come la <strong>velocità di diffusione delle fake news superi sempre quella delle smentite</strong>.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> In May 2020, a 26-minute video "Plandemic" reached <strong>8 million views in one week</strong> before removal. Every single claim was refuted by over 50 peer-reviewed studies. The case demonstrated how <strong>fake news always spreads faster than corrections</strong>.</p>
+    </div>
+
+  </div>
+
+  <!-- ===== CATEGORIA 5: SFIDE SOCIAL PERICOLOSE ===== -->
+  <div class="section-title"><span class="section-icon">📱</span><h2>Sfide Virali Pericolose &amp; Manipolazione dei Minori</h2></div>
+
+  <div class="card-grid">
+
+    <div class="card" style="border-top:4px solid #c62828">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🌍</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#c62828">TikTok "Blackout Challenge"</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">USA / Internazionale · 2021–2022</div>
+        </div>
+        <span class="tag tag-red" style="margin-left:auto">Challenge Letale</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> La sfida invitava gli utenti a stringersi qualcosa attorno al collo fino alla perdita di coscienza e riprendersi mentre si riprendevano. Almeno <strong>15 bambini e adolescenti</strong> (alcuni di 9-10 anni) morirono nel tentativo. Negli USA le famiglie hanno fatto causa a TikTok, accusando l'algoritmo di aver promosso attivamente il contenuto ai minori. TikTok fu condannata nel 2023 a <strong>368 milioni di dollari di multa</strong> per violazioni della privacy dei minori in Europa.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> The challenge invited users to choke themselves until passing out and film it. At least <strong>15 children and adolescents</strong> died attempting it. Families sued TikTok, accusing the algorithm of actively promoting the content to minors. TikTok was fined <strong>€368 million</strong> in Europe for violations of children's privacy.</p>
+    </div>
+
+    <div class="card" style="border-top:4px solid #c62828">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🌍</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#c62828">Blue Whale Challenge</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Russia / Internazionale · 2016–2017</div>
+        </div>
+        <span class="tag tag-red" style="margin-left:auto">Manipolazione</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> Un "gioco" online in 50 tappe progettato per manipolare psicologicamente adolescenti vulnerabili, con compiti giornalieri sempre più autolesivi, fino al suicidio come "atto finale". L'ideatore russo Philipp Budeikin fu arrestato e condannato. Sono stati documentati decine di casi in Russia, India, e altri Paesi. In Italia ci furono segnalazioni, con indagini della Polizia Postale che portarono al monitoraggio sistematico di alcuni forum online.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> An online "game" in 50 stages designed to psychologically manipulate vulnerable teenagers with increasingly self-harmful daily tasks, culminating in suicide. Russian creator Philipp Budeikin was arrested and convicted. Dozens of cases were documented globally.</p>
+    </div>
+
+    <div class="card" style="border-top:4px solid #f57c00">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🇮🇹</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#f57c00">Sextortion sui minori — Fenomeno italiano</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Italia · 2020–oggi · +47% nel 2023</div>
+        </div>
+        <span class="tag tag-amber" style="margin-left:auto">Sextortion</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> La Polizia Postale italiana ha registrato un aumento del <strong>47% delle segnalazioni di sextortion sui minori nel 2023</strong>. Il meccanismo: un profilo falso di un coetaneo o di una ragazza attraente contatta la vittima, si guadagna la fiducia, la convince a inviare immagini intime, e poi minaccia di diffonderle ai genitori o a tutta la scuola se non paga. Le vittime principali sono maschi tra 13 e 17 anni. Molte famiglie non denunciano per vergogna, alimentando il problema.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> Italian Postal Police recorded a <strong>47% increase in reports of minor sextortion in 2023</strong>. A fake peer profile builds trust, convinces the victim to send intimate images, then threatens to send them to parents or the whole school unless paid. Victims are mainly males aged 13–17.</p>
+    </div>
+
+  </div>
+
+  <!-- ===== CATEGORIA 6: AGRIFAKE REALE ===== -->
+  <div class="section-title"><span class="section-icon">🌾</span><h2>Agrifake — Casi Reali di Disinformazione Agroalimentare</h2></div>
+
+  <div class="card-grid">
+
+    <div class="card" style="border-top:4px solid #2e7d32">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🌍</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#1b5e20">Il caso Glifosato — IARC vs EPA</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Internazionale · 2015–oggi · Il dibattito scientifico strumentalizzato</div>
+        </div>
+        <span class="tag" style="margin-left:auto">Agrifake</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> Nel 2015 l'IARC (Agenzia OMS per la Ricerca sul Cancro) classificò il glifosato come "probabilmente cancerogeno per l'uomo" (classe 2A). I media riportarono "il glifosato causa il cancro". Ma la stessa classe 2A include il <strong>consumo di carni rosse</strong>, il <strong>lavoro da parrucchiere</strong> e il <strong>turni di notte</strong>. L'EPA (Agenzia USA per l'Ambiente) e l'EFSA (Autorità Europea per la Sicurezza Alimentare) hanno raggiunto conclusioni opposte. La strumentalizzazione di questa ambiguità scientifica ha alimentato una campagna mediatica da centinaia di milioni di euro contro l'agricoltura convenzionale.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> In 2015 IARC classified glyphosate as "probably carcinogenic" (Class 2A) — the same class as <strong>red meat consumption</strong> and <strong>night shifts</strong>. The exploitation of this scientific ambiguity fuelled a multi-million-euro media campaign against conventional agriculture.</p>
+      <div class="callout callout-green" style="margin-top:.75rem">
+        <div class="callout-title">🔬 Lezione dal metodo scientifico</div>
+        <p style="font-size:.83rem">"Probabilmente cancerogeno" ≠ "causa il cancro". Leggere le fonti primarie — non i titoli dei giornali — è l'unica difesa contro la strumentalizzazione scientifica.</p>
+        <p style="font-size:.79rem;color:var(--text-muted);font-style:italic">"Probably carcinogenic" ≠ "causes cancer". Reading primary sources — not newspaper headlines — is the only defence against scientific misrepresentation.</p>
+      </div>
+    </div>
+
+    <div class="card" style="border-top:4px solid #2e7d32">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🇮🇹</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#1b5e20">La Bufala del "Pomodoro Cinese OGM"</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Italia · Virale ogni estate dal 2015</div>
+        </div>
+        <span class="tag" style="margin-left:auto">Agrifake</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> Ogni estate tornano virali sui social italiani video e post che mostrano "pomodori cinesi OGM che rimangono freschi dopo mesi" o "pomodori plastificati che non marciscono". Il messaggio implicito: l'agricoltura industriale straniera avvelena, quella italiana (biologica e tradizionale) salva. <strong>La realtà:</strong> non esistono pomodori OGM in commercio nell'UE; la conservazione è dovuta a tecniche di raccolta e stoccaggio, non a modificazioni genetiche. L'Agrifake utilizza la paura per orientare le scelte d'acquisto a danno dei produttori onesti.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> Every summer, viral videos of "Chinese GMO tomatoes that stay fresh for months" circulate on Italian social media. <strong>Reality:</strong> no GMO tomatoes are sold in the EU; preservation is due to harvesting techniques, not genetic modification. Agrifake uses fear to steer purchasing choices.</p>
+    </div>
+
+    <div class="card" style="border-top:4px solid #2e7d32">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.75rem">
+        <span style="font-size:1.5rem">🇷🇺</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem;color:#1b5e20">Operazione "Secondary Infektion"</div>
+          <div style="font-size:.78rem;color:var(--text-muted)">Russia vs UE · 2014–2019 · Disinformazione PAC e OGM</div>
+        </div>
+        <span class="tag" style="margin-left:auto">Disinformazione</span>
+      </div>
+      <p style="font-size:.88rem"><strong>Cosa è successo:</strong> L'Unione Europea Disinformation Lab e EU DisinfoLab hanno documentato una <strong>rete di disinformazione russa</strong> ("Secondary Infektion") che per anni ha diffuso notizie false su: OGM nelle politiche agricole UE, impatti ambientali dell'agricoltura europea, scandali alimentari inventati. L'obiettivo era minare la fiducia dei consumatori europei nelle istituzioni UE e nelle filiere alimentari. Circa <strong>2.500 post falsi</strong> in 7 lingue europee.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>What happened:</strong> EU DisinfoLab documented a <strong>Russian disinformation network</strong> ("Secondary Infektion") that for years spread fake news about GMOs in EU agricultural policies, invented food scandals, and environmental impacts of European agriculture — aiming to undermine trust in EU institutions.</p>
+    </div>
+
+  </div>
+
+  <!-- ===== TABELLA RIEPILOGATIVA ===== -->
+  <div class="section-title"><span class="section-icon">📊</span><h2>Riepilogo: Danni, Reati, Sanzioni · Summary Table</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Caso / Case</th><th>Paese</th><th>Anno</th><th>Danno / Harm</th><th>Reato Configurabile (IT)</th><th>Sanzione / Outcome</th></tr></thead>
+      <tbody>
+        <tr><td class="td-bold">Carolina Picchio</td><td>🇮🇹</td><td>2013</td><td>Suicidio di minore</td><td>Cyberbullismo, diffamazione aggravata</td><td>Legge 71/2017 emanata. Condanne per i responsabili.</td></tr>
+        <tr><td class="td-bold">Amanda Todd</td><td>🇨🇦</td><td>2012</td><td>Suicidio di minore</td><td>Sextortion, cyberstalking</td><td>Responsabile olandese condannato a 13 anni (2022).</td></tr>
+        <tr><td class="td-bold">Tiziana Cantone</td><td>🇮🇹</td><td>2016</td><td>Suicidio</td><td>Revenge porn (Art. 612-ter introdotto nel 2019)</td><td>Legge introdotta. Processi ancora in corso.</td></tr>
+        <tr><td class="td-bold">CEO Voice Deepfake</td><td>🇬🇧</td><td>2019</td><td>€220.000 sottratti</td><td>Truffa aggravata, sostituzione di persona</td><td>Nessun arrestato. Caso ancora irrisolto.</td></tr>
+        <tr><td class="td-bold">Cambridge Analytica</td><td>🌍</td><td>2018</td><td>87M profili violati, manipolazione elettorale</td><td>Violazione GDPR, trattamento illecito dati</td><td>Facebook multata per 5 miliardi di $ dalla FTC USA.</td></tr>
+        <tr><td class="td-bold">Blackout Challenge (TikTok)</td><td>🌍</td><td>2021-22</td><td>≥15 morti tra i minori</td><td>Istigazione al suicidio (dibattuto)</td><td>TikTok multata €368M in UE. Cause civili negli USA.</td></tr>
+        <tr><td class="td-bold">Truffa INPS/Poste</td><td>🇮🇹</td><td>2021+</td><td>Centinaia di M€ sottratti</td><td>Truffa informatica (Art. 640-ter c.p.), phishing</td><td>Operazioni Polizia Postale con arresti periodici.</td></tr>
+        <tr><td class="td-bold">Ashley Madison hack</td><td>🌍</td><td>2015</td><td>37M esposti, ricatti, suicidi</td><td>Accesso abusivo sistemi informatici, estorsione</td><td>Azienda multata. Hacker mai identificati.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-green" style="margin-top:1.5rem">
+    <div class="callout-title">🎯 Cosa ci insegnano tutti questi casi / What all these cases teach us</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.75rem;margin-top:.5rem;font-size:.85rem">
+      <div>📌 <strong>Il digitale ha conseguenze reali:</strong> morte, carcere, multa, perdita di lavoro. Non è un gioco.<br><em>Digital actions have real consequences: death, prison, fines, job loss.</em></div>
+      <div>📌 <strong>La velocità amplifica tutto:</strong> un contenuto può girare il mondo in minuti, prima che tu possa fermarlo.<br><em>Speed amplifies everything: content can circle the globe in minutes.</em></div>
+      <div>📌 <strong>L'anonimato è un'illusione:</strong> gli investigatori digitali identificano i responsabili anche anni dopo.<br><em>Anonymity is an illusion: digital investigators identify perpetrators even years later.</em></div>
+      <div>📌 <strong>I dati ceduti non si riprendono:</strong> ogni informazione condivisa online può essere usata contro di te.<br><em>Data surrendered cannot be retrieved: every shared piece of info can be used against you.</em></div>
+    </div>
+  </div>
+
+</div>
+</div><!-- end tab-casireali -->
+
+
 <div id="tab-glossario" class="tab-content">
 <div class="container">
 
@@ -1420,11 +1777,11 @@ footer .footer-divider { margin: .75rem 0; border: none; border-top: 1px solid r
   <div class="footer-links">
     <a href="https://agrariomendel.edu.it" target="_blank">🌐 agrariomendel.edu.it</a>
     <a href="https://www.mim.gov.it" target="_blank">📋 MIUR</a>
-    <a href="https://digcomp.jrc.ec.europa.eu/" target="_blank">🇪🇺 DigComp 2.2</a>
+    <a href="https://repubblicadigitale.gov.it/portale/-/digcomp-3.0" target="_blank">🇪🇺 DigComp 3.0</a>
     <a href="https://www.unesco.org/en/media-information-literacy" target="_blank">🎓 UNESCO MIL</a>
     <a href="https://www.georgofili.it" target="_blank">🌾 Accademia dei Georgofili</a>
   </div>
-  <div style="margin-top:.75rem;font-size:.75rem;opacity:.55">A.S. 2025/26 · Versione 1.0 · Contenuti basati su ricerca accademica e normativa vigente · Tutti i diritti riservati</div>
+  <div style="margin-top:.75rem;font-size:.75rem;opacity:.55">A.S. 2025/26 · Versione 2.0 · Contenuti basati su ricerca accademica e normativa vigente · Tutti i diritti riservati</div>
 </footer>
 
 <!-- ==================== JAVASCRIPT ==================== -->
@@ -1483,7 +1840,7 @@ const glossaryData = [
   { it: "CRAAP Test", en: "CRAAP Test", cat: "digitale", defIt: "Protocollo di analisi delle fonti basato su 5 parametri: Currency, Relevance, Authority, Accuracy, Purpose.", defEn: "Source analysis protocol based on 5 parameters: Currency, Relevance, Authority, Accuracy, Purpose." },
   { it: "Lettura laterale", en: "Lateral reading", cat: "digitale", defIt: "Strategia di fact-checking che abbandona la fonte sospetta per interrogare fonti terze indipendenti sulla sua reputazione.", defEn: "Fact-checking strategy that leaves the suspicious source to query independent third-party sources about its reputation." },
   { it: "OSINT", en: "OSINT", cat: "digitale", defIt: "Open Source Intelligence: metodologia di raccolta e analisi di informazioni da fonti pubblicamente disponibili.", defEn: "Open Source Intelligence: methodology of gathering and analysing information from publicly available sources." },
-  { it: "DigComp 2.2", en: "DigComp 2.2", cat: "digitale", defIt: "Quadro europeo delle Competenze Digitali per i Cittadini, con 5 aree e 21 competenze descritte su 8 livelli.", defEn: "European Digital Competence Framework for Citizens, with 5 areas and 21 competences described across 8 levels." },
+  { it: "DigComp 3.0", en: "DigComp 3.0", cat: "digitale", defIt: "Quinta edizione del Quadro europeo delle Competenze Digitali per i Cittadini (27 marzo 2026). 5 aree, integrazione sistematica delle competenze IA, nuova sezione risultati di apprendimento. Sostituisce DigComp 2.2.", defEn: "Fifth edition of the European Digital Competence Framework for Citizens (27 March 2026). 5 areas, systematic AI competence integration, new learning outcomes section. Replaces DigComp 2.2." },
   { it: "MIL", en: "MIL", cat: "digitale", defIt: "Media and Information Literacy (UNESCO): insieme di competenze per accedere, valutare e creare contenuti in modo critico.", defEn: "Media and Information Literacy (UNESCO): set of competences to access, evaluate and create content critically." },
   { it: "Netiquette", en: "Netiquette", cat: "digitale", defIt: "Insieme non scritto di regole di comportamento rispettoso e civile negli spazi di comunicazione online.", defEn: "Unwritten set of rules for respectful and civil behaviour in online communication spaces." },
   { it: "Algoritmo", en: "Algorithm", cat: "digitale", defIt: "Insieme di istruzioni matematiche che determinano quali contenuti vengono mostrati agli utenti sui social media.", defEn: "Set of mathematical instructions determining which content is shown to users on social media." },
