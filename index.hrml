@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cittadinanza Digitale / Digital Citizenship — IIS Mendel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+/* ===================== CSS VARIABLES ===================== */
+:root {
+  --green-dark:   #1b5e20;
+  --green-main:   #2e7d32;
+  --green-light:  #4caf50;
+  --green-pale:   #c8e6c9;
+  --amber:        #f57c00;
+  --amber-light:  #ffe0b2;
+  --red-accent:   #c62828;
+  --blue-accent:  #1565c0;
+  --bg:           #ffffff;
+  --bg-sec:       #f5f5f5;
+  --bg-card:      #ffffff;
+  --text:         #1a1a1a;
+  --text-muted:   #5a5a5a;
+  --border:       #dde0dd;
+  --shadow:       rgba(0,0,0,0.10);
+  --tab-bg:       #e8f5e9;
+  --tab-active:   #2e7d32;
+  --tab-text:     #1b5e20;
+  --header-text:  #ffffff;
+  --badge-bg:     #e8f5e9;
+  --badge-text:   #1b5e20;
+  --table-head:   #1b5e20;
+  --table-row2:   #f1f8f1;
+  --highlight:    #fff9c4;
+  --glossary-en:  #1565c0;
+  --glossary-it:  #2e7d32;
+  --tag-bg:       #e8f5e9;
+  --chart-grid:   rgba(0,0,0,0.08);
+}
+[data-theme="dark"] {
+  --bg:           #121212;
+  --bg-sec:       #1c1c1c;
+  --bg-card:      #242424;
+  --text:         #eaeaea;
+  --text-muted:   #9e9e9e;
+  --border:       #333;
+  --shadow:       rgba(0,0,0,0.45);
+  --tab-bg:       #1c2e1c;
+  --tab-active:   #4caf50;
+  --tab-text:     #a5d6a7;
+  --badge-bg:     #1b3a1e;
+  --badge-text:   #a5d6a7;
+  --table-row2:   #1e2e1e;
+  --highlight:    #332900;
+  --glossary-en:  #90caf9;
+  --glossary-it:  #a5d6a7;
+  --tag-bg:       #1b3a1e;
+  --chart-grid:   rgba(255,255,255,0.08);
+}
+
+/* ===================== BASE ===================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Titillium Web', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  transition: background .3s, color .3s;
+}
+a { color: var(--green-main); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; }
+
+h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+h2 { font-size: 1.8rem; color: var(--green-dark); margin-bottom: 1rem; }
+[data-theme="dark"] h2 { color: var(--green-light); }
+h3 { font-size: 1.25rem; color: var(--green-main); margin-bottom: .5rem; }
+[data-theme="dark"] h3 { color: #a5d6a7; }
+p { margin-bottom: .9rem; }
+
+/* ===================== HEADER ===================== */
+header {
+  background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-main) 60%, #388e3c 100%);
+  color: var(--header-text);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 3px 12px rgba(0,0,0,.3);
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: .8rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.logo-badge {
+  background: rgba(255,255,255,.15);
+  border-radius: 10px;
+  padding: .4rem .9rem;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid rgba(255,255,255,.25);
+}
+.header-titles { flex: 1; min-width: 200px; }
+.header-titles h1 {
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  line-height: 1.1;
+}
+.header-titles .subtitle {
+  font-size: .82rem;
+  opacity: .85;
+  font-style: italic;
+  margin-top: .15rem;
+}
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-left: auto;
+}
+.dark-toggle {
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.3);
+  color: #fff;
+  border-radius: 50px;
+  padding: .35rem .9rem;
+  cursor: pointer;
+  font-size: .82rem;
+  font-family: 'Titillium Web', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  transition: background .2s;
+}
+.dark-toggle:hover { background: rgba(255,255,255,.28); }
+
+/* ===================== TAB NAV ===================== */
+.tabs-wrapper {
+  background: var(--bg-sec);
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 68px;
+  z-index: 900;
+  overflow-x: auto;
+}
+.tabs-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  padding: 0 1rem;
+  gap: 0;
+}
+.tab-btn {
+  background: none;
+  border: none;
+  padding: .85rem 1.1rem;
+  cursor: pointer;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--tab-text);
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+.tab-btn:hover { background: var(--tab-bg); color: var(--green-dark); }
+.tab-btn.active {
+  border-bottom-color: var(--tab-active);
+  color: var(--tab-active);
+  background: var(--tab-bg);
+}
+[data-theme="dark"] .tab-btn.active { color: var(--green-light); }
+
+/* ===================== MAIN CONTENT ===================== */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ===================== CARDS ===================== */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: transform .2s, box-shadow .2s;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--shadow); }
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+
+/* Pillar cards */
+.pillar-card {
+  border-top: 5px solid var(--green-main);
+  text-align: center;
+  padding: 1.75rem 1.5rem;
+}
+.pillar-card.amber { border-top-color: var(--amber); }
+.pillar-card.blue { border-top-color: var(--blue-accent); }
+.pillar-icon { font-size: 2.5rem; margin-bottom: .75rem; }
+.pillar-card h3 { font-size: 1.05rem; }
+
+/* Stat badges */
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.stat-badge {
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  border-radius: 8px;
+  padding: .7rem 1.2rem;
+  text-align: center;
+  flex: 1;
+  min-width: 130px;
+  border: 1px solid var(--green-pale);
+}
+.stat-num { font-size: 2rem; font-weight: 900; color: var(--green-main); line-height: 1; }
+[data-theme="dark"] .stat-num { color: var(--green-light); }
+.stat-label { font-size: .78rem; color: var(--text-muted); margin-top: .2rem; }
+
+/* ===================== TABLES ===================== */
+.table-wrap { overflow-x: auto; border-radius: 10px; box-shadow: 0 2px 8px var(--shadow); margin: 1.5rem 0; }
+table { width: 100%; border-collapse: collapse; background: var(--bg-card); }
+thead tr { background: var(--table-head); color: #fff; }
+th { padding: .85rem 1rem; text-align: left; font-size: .88rem; font-weight: 700; letter-spacing: .03em; }
+td { padding: .8rem 1rem; border-bottom: 1px solid var(--border); font-size: .88rem; vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--table-row2); }
+tbody tr:hover { background: var(--green-pale); }
+[data-theme="dark"] tbody tr:hover { background: rgba(76,175,80,.12); }
+.td-bold { font-weight: 700; color: var(--green-dark); }
+[data-theme="dark"] .td-bold { color: var(--green-light); }
+
+/* ===================== BILINGUAL QUOTES ===================== */
+.bilingual-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.bilingual-block .lang-it,
+.bilingual-block .lang-en {
+  padding: 1.25rem 1.5rem;
+  font-size: .92rem;
+}
+.bilingual-block .lang-it { background: #e8f5e9; border-left: 4px solid var(--green-main); }
+.bilingual-block .lang-en { background: #e3f2fd; border-left: 4px solid var(--blue-accent); }
+[data-theme="dark"] .bilingual-block .lang-it { background: #1b3a1e; }
+[data-theme="dark"] .bilingual-block .lang-en { background: #0d2137; }
+.lang-flag { font-size: 1.1rem; margin-right: .3rem; }
+.lang-label { font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .4rem; }
+.lang-it .lang-label { color: var(--green-dark); }
+.lang-en .lang-label { color: var(--blue-accent); }
+[data-theme="dark"] .lang-it .lang-label { color: var(--green-light); }
+[data-theme="dark"] .lang-en .lang-label { color: #90caf9; }
+
+/* ===================== CALL-OUT BOXES ===================== */
+.callout {
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0;
+  border-left: 5px solid;
+  font-size: .92rem;
+}
+.callout-green { background: #e8f5e9; border-color: var(--green-main); }
+.callout-amber { background: #fff3e0; border-color: var(--amber); }
+.callout-red   { background: #ffebee; border-color: var(--red-accent); }
+.callout-blue  { background: #e3f2fd; border-color: var(--blue-accent); }
+[data-theme="dark"] .callout-green { background: #1b3a1e; }
+[data-theme="dark"] .callout-amber { background: #2d1d00; }
+[data-theme="dark"] .callout-red   { background: #2d0a0a; }
+[data-theme="dark"] .callout-blue  { background: #0d2137; }
+.callout-title { font-weight: 700; font-size: 1rem; margin-bottom: .4rem; }
+.callout-green .callout-title { color: var(--green-dark); }
+[data-theme="dark"] .callout-green .callout-title { color: var(--green-light); }
+.callout-amber .callout-title { color: var(--amber); }
+.callout-red .callout-title   { color: var(--red-accent); }
+.callout-blue .callout-title  { color: var(--blue-accent); }
+
+/* ===================== ACCORDION ===================== */
+.accordion { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin: 1rem 0; }
+.accordion-item { border-bottom: 1px solid var(--border); }
+.accordion-item:last-child { border-bottom: none; }
+.accordion-btn {
+  width: 100%;
+  background: var(--bg-card);
+  border: none;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: background .2s;
+}
+.accordion-btn:hover { background: var(--tab-bg); }
+.accordion-btn.open { background: var(--tab-bg); color: var(--green-dark); }
+[data-theme="dark"] .accordion-btn.open { color: var(--green-light); }
+.accordion-chevron { transition: transform .25s; font-size: .8rem; }
+.accordion-btn.open .accordion-chevron { transform: rotate(180deg); }
+.accordion-body { display: none; padding: 1rem 1.25rem 1.25rem; background: var(--bg-sec); font-size: .9rem; }
+.accordion-body.open { display: block; }
+
+/* ===================== CHARTS ===================== */
+.chart-container {
+  position: relative;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px var(--shadow);
+  margin: 1.5rem 0;
+}
+.chart-title {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--green-dark);
+  font-family: 'Playfair Display', serif;
+}
+[data-theme="dark"] .chart-title { color: var(--green-light); }
+.chart-wrap { max-height: 380px; }
+
+/* ===================== GLOSSARY ===================== */
+.glossary-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+.glossary-search {
+  flex: 1;
+  min-width: 200px;
+  padding: .65rem 1rem;
+  border: 2px solid var(--green-light);
+  border-radius: 8px;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: .95rem;
+  background: var(--bg-card);
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s;
+}
+.glossary-search:focus { border-color: var(--green-dark); }
+.filter-btns { display: flex; gap: .5rem; flex-wrap: wrap; }
+.filter-btn {
+  padding: .5rem 1rem;
+  border-radius: 20px;
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  cursor: pointer;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: .82rem;
+  font-weight: 600;
+  transition: all .2s;
+}
+.filter-btn.active-it { background: var(--green-main); color: #fff; border-color: var(--green-main); }
+.filter-btn.active-en { background: var(--blue-accent); color: #fff; border-color: var(--blue-accent); }
+.filter-btn.active-all { background: var(--amber); color: #fff; border-color: var(--amber); }
+
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+.gloss-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  transition: box-shadow .2s;
+}
+.gloss-card:hover { box-shadow: 0 4px 14px var(--shadow); }
+.gloss-terms {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin-bottom: .4rem;
+}
+.term-it {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--glossary-it);
+}
+.term-sep { color: var(--text-muted); font-size: .8rem; }
+.term-en {
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--glossary-en);
+  font-style: italic;
+}
+.gloss-cat {
+  display: inline-block;
+  background: var(--tag-bg);
+  color: var(--badge-text);
+  font-size: .7rem;
+  padding: .15rem .5rem;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: .5rem;
+}
+.gloss-def-it { font-size: .85rem; color: var(--text); margin-bottom: .3rem; }
+.gloss-def-en { font-size: .82rem; color: var(--text-muted); font-style: italic; border-top: 1px solid var(--border); margin-top: .4rem; padding-top: .4rem; }
+
+/* ===================== METHODOLOGY STEPS ===================== */
+.steps-list { list-style: none; }
+.step-item {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  align-items: flex-start;
+}
+.step-num {
+  background: var(--green-main);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: .95rem;
+}
+.step-body h4 { font-weight: 700; color: var(--green-dark); margin-bottom: .2rem; }
+[data-theme="dark"] .step-body h4 { color: var(--green-light); }
+.step-body p { font-size: .88rem; margin: 0; }
+
+/* ===================== OSINT TOOLS ===================== */
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1rem 0; }
+.tool-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.2rem;
+  border-top: 4px solid var(--green-light);
+  transition: transform .2s, box-shadow .2s;
+}
+.tool-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px var(--shadow); }
+.tool-icon { font-size: 1.8rem; margin-bottom: .5rem; }
+.tool-name { font-weight: 700; color: var(--green-dark); margin-bottom: .3rem; }
+[data-theme="dark"] .tool-name { color: var(--green-light); }
+.tool-desc { font-size: .83rem; color: var(--text-muted); }
+
+/* ===================== LEGAL TIMELINE ===================== */
+.legal-timeline { position: relative; padding-left: 2rem; }
+.legal-timeline::before {
+  content: '';
+  position: absolute;
+  left: .6rem;
+  top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, var(--green-main), var(--amber), var(--red-accent));
+  border-radius: 2px;
+}
+.timeline-item { position: relative; margin-bottom: 1.5rem; }
+.timeline-dot {
+  position: absolute;
+  left: -1.55rem;
+  top: .3rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid var(--bg-card);
+  box-shadow: 0 0 0 2px;
+}
+.dot-green { background: var(--green-main); color: var(--green-main); }
+.dot-amber { background: var(--amber); color: var(--amber); }
+.dot-red   { background: var(--red-accent); color: var(--red-accent); }
+.timeline-age {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--green-dark);
+  margin-bottom: .3rem;
+}
+[data-theme="dark"] .timeline-age { color: var(--green-light); }
+.timeline-body { font-size: .88rem; }
+
+/* ===================== HERO SECTION (Tab 1) ===================== */
+.hero-section {
+  background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 50%, #fff9c4 100%);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--green-pale);
+  position: relative;
+  overflow: hidden;
+}
+[data-theme="dark"] .hero-section {
+  background: linear-gradient(135deg, #1b3a1e 0%, #1c2e0d 50%, #2d2700 100%);
+  border-color: #2d4a2e;
+}
+.hero-section::before {
+  content: '🌱';
+  position: absolute;
+  right: 2rem; bottom: 1rem;
+  font-size: 6rem;
+  opacity: .08;
+}
+.hero-section h2 { margin-bottom: .5rem; font-size: 2rem; }
+.hero-tagline { font-size: 1.05rem; color: var(--text-muted); max-width: 700px; margin-bottom: 1rem; }
+
+/* ===================== SECTION DIVIDERS ===================== */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0 1rem;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(to right, var(--green-light), transparent);
+  border-radius: 1px;
+}
+.section-icon { font-size: 1.4rem; }
+
+/* ===================== TAG PILLS ===================== */
+.tag-list { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .5rem; }
+.tag {
+  background: var(--tag-bg);
+  color: var(--badge-text);
+  padding: .2rem .65rem;
+  border-radius: 20px;
+  font-size: .75rem;
+  font-weight: 600;
+  border: 1px solid var(--green-pale);
+}
+.tag-amber { background: #fff3e0; color: #7a3900; border-color: #ffe0b2; }
+.tag-blue  { background: #e3f2fd; color: #0d3c70; border-color: #bbdefb; }
+.tag-red   { background: #ffebee; color: #7f0000; border-color: #ffcdd2; }
+[data-theme="dark"] .tag-amber { background: #2d1d00; color: #ffcc80; }
+[data-theme="dark"] .tag-blue  { background: #0d2137; color: #90caf9; }
+[data-theme="dark"] .tag-red   { background: #2d0a0a; color: #ef9a9a; }
+
+/* ===================== FOOTER ===================== */
+footer {
+  background: var(--green-dark);
+  color: rgba(255,255,255,.85);
+  text-align: center;
+  padding: 1.8rem 1rem;
+  margin-top: 3rem;
+  font-size: .85rem;
+}
+footer strong { color: #a5d6a7; }
+footer .footer-links { margin-top: .5rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 1.2rem; }
+footer .footer-links a { color: #c8e6c9; font-size: .8rem; }
+footer .footer-divider { margin: .75rem 0; border: none; border-top: 1px solid rgba(255,255,255,.15); }
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  .bilingual-block { grid-template-columns: 1fr; }
+  .hero-section { padding: 1.5rem; }
+  .hero-section h2 { font-size: 1.4rem; }
+  .container { padding: 1.2rem 1rem; }
+  .stats-row { flex-direction: column; }
+  h2 { font-size: 1.4rem; }
+}
+
+/* ===================== PRINT ===================== */
+@media print {
+  .tabs-wrapper, header .dark-toggle { display: none; }
+  .tab-content { display: block !important; page-break-before: always; }
+}
+
+/* Highlight keyword in glossary */
+.gloss-highlight { background: var(--highlight); border-radius: 2px; }
+
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+  grid-column: 1 / -1;
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header>
+  <div class="header-inner">
+    <div class="logo-badge">🌱 IIS Mendel · Villa Cortese (MI)</div>
+    <div class="header-titles">
+      <h1>Cittadinanza Digitale &amp; Digital Citizenship</h1>
+      <div class="subtitle">Educazione Civica Trasversale · Classe V · A.S. 2024/25</div>
+    </div>
+    <div class="header-controls">
+      <button class="dark-toggle" onclick="toggleDark()" id="darkBtn">🌙 Dark</button>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== TAB NAV ==================== -->
+<div class="tabs-wrapper" role="navigation" aria-label="Sezioni pagina">
+  <div class="tabs-nav">
+    <button class="tab-btn active" onclick="showTab('home', this)">🏠 Home</button>
+    <button class="tab-btn" onclick="showTab('framework', this)">📋 Framework</button>
+    <button class="tab-btn" onclick="showTab('psicologia', this)">🧠 Psicologia</button>
+    <button class="tab-btn" onclick="showTab('agridigital', this)">🌾 AgriDigital</button>
+    <button class="tab-btn" onclick="showTab('metodologie', this)">🔍 Metodologie</button>
+    <button class="tab-btn" onclick="showTab('legale', this)">⚖️ Aspetti Legali</button>
+    <button class="tab-btn" onclick="showTab('glossario', this)">📖 Glossario</button>
+  </div>
+</div>
+
+<!-- ==================== TAB 1: HOME ==================== -->
+<div id="tab-home" class="tab-content active">
+<div class="container">
+
+  <div class="hero-section">
+    <h2>Navigare nel Web con Senso Critico</h2>
+    <p class="hero-tagline">Un percorso multidisciplinare per diventare cittadini digitali responsabili, con focus sul settore agroalimentare e sulla difesa della scienza agraria.</p>
+    <div class="bilingual-block" style="margin-top:1.5rem">
+      <div class="lang-it">
+        <div class="lang-label"><span class="lang-flag">🇮🇹</span> Italiano</div>
+        <p>L'educazione alla cittadinanza digitale non è più un corollario educativo, ma un <strong>imperativo democratico essenziale</strong>. In un ecosistema iper-complesso, saper distinguere il vero dal falso è la competenza fondamentale del XXI secolo.</p>
+      </div>
+      <div class="lang-en">
+        <div class="lang-label"><span class="lang-flag">🇬🇧</span> English</div>
+        <p>Education in digital citizenship is no longer a mere educational appendage, but an <strong>essential democratic imperative</strong>. In a hyper-complex information ecosystem, telling truth from falsehood is the core competence of the 21st century.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-badge"><div class="stat-num">33</div><div class="stat-label">ore obbligatorie per anno<br><em>mandatory hours per year</em></div></div>
+    <div class="stat-badge"><div class="stat-num">5</div><div class="stat-label">aree DigComp 2.2<br><em>DigComp 2.2 areas</em></div></div>
+    <div class="stat-badge"><div class="stat-num">3</div><div class="stat-label">pilastri Educ. Civica<br><em>Civic Education pillars</em></div></div>
+    <div class="stat-badge"><div class="stat-num">L.92</div><div class="stat-label">Legge 2019 · Art. 5<br><em>Law on Digital Citizenship</em></div></div>
+    <div class="stat-badge"><div class="stat-num">GDPR</div><div class="stat-label">Regolamento UE Privacy<br><em>EU Data Protection Reg.</em></div></div>
+  </div>
+
+  <!-- 3 Pillars -->
+  <div class="section-title"><span class="section-icon">🏛️</span><h2>I Tre Pilastri dell'Educazione Civica · The Three Pillars</h2></div>
+  <div class="card-grid">
+    <div class="card pillar-card">
+      <div class="pillar-icon">📜</div>
+      <h3>Costituzione</h3>
+      <p style="font-size:.88rem">Diritto nazionale e internazionale, legalità, solidarietà sociale.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">Constitution, rule of law, civic solidarity and international law.</p>
+      <div class="tag-list"><span class="tag">Legalità</span><span class="tag">Diritti</span><span class="tag">Rule of Law</span></div>
+    </div>
+    <div class="card pillar-card amber">
+      <div class="pillar-icon">🌍</div>
+      <h3>Sviluppo Sostenibile</h3>
+      <p style="font-size:.88rem">Educazione ambientale, patrimonio territoriale, Agenda 2030.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">Environmental education, landscape heritage, SDGs and Agenda 2030.</p>
+      <div class="tag-list"><span class="tag tag-amber">Agenda 2030</span><span class="tag tag-amber">SDGs</span><span class="tag tag-amber">Agroecologia</span></div>
+    </div>
+    <div class="card pillar-card blue">
+      <div class="pillar-icon">💻</div>
+      <h3>Cittadinanza Digitale</h3>
+      <p style="font-size:.88rem">Competenze digitali critiche, sicurezza, comunicazione etica online.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">Critical digital skills, cybersecurity, ethical online communication.</p>
+      <div class="tag-list"><span class="tag tag-blue">DigComp</span><span class="tag tag-blue">Cybersecurity</span><span class="tag tag-blue">Netiquette</span></div>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <div class="card-grid" style="margin-top:1.5rem">
+    <div class="chart-container">
+      <div class="chart-title">Distribuzione ore: Educazione Civica (33h)</div>
+      <div class="chart-wrap"><canvas id="chartPillar"></canvas></div>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;gap:.75rem">
+      <h3>📌 Perché la Cittadinanza Digitale è strategica per noi?</h3>
+      <p style="font-size:.88rem">Per gli studenti dell'IIS Mendel la competenza digitale ha una <strong>doppia valenza strategica</strong>:</p>
+      <div class="callout callout-green">
+        <div class="callout-title">👨‍🎓 Come futuri cittadini</div>
+        Esercitare diritti e doveri nello spazio digitale con piena responsabilità giuridica ed etica.<br>
+        <em style="font-size:.82rem">As future citizens: exercising rights and duties in digital space with full legal and ethical responsibility.</em>
+      </div>
+      <div class="callout callout-amber">
+        <div class="callout-title">🌾 Come futuri agrotecnici</div>
+        Operare in un settore esposto a fake news, pseudoscienza e manipolazione mediatica. Difendere la scienza agraria è un dovere professionale.<br>
+        <em style="font-size:.82rem">As future agricultural technicians: working in a sector heavily targeted by fake news. Defending agricultural science is a professional duty.</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- Le tre direttrici -->
+  <div class="section-title"><span class="section-icon">🎯</span><h2>Le 3 Direttrici Ministeriali · The 3 Ministerial Directives</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Direttrice / Directive</th><th>Descrizione (IT)</th><th>Description (EN)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">📊 Accesso e Valutazione Critica</td>
+          <td>Saper distinguere informazioni verificate da quelle false, distorte o manipolate.</td>
+          <td>Being able to distinguish verified information from false, distorted or manipulated content.</td>
+        </tr>
+        <tr>
+          <td class="td-bold">🔒 Sicurezza Digitale</td>
+          <td>Proteggere l'identità digitale, la privacy e i dati sensibili online.</td>
+          <td>Protecting digital identity, privacy and sensitive data online.</td>
+        </tr>
+        <tr>
+          <td class="td-bold">🤝 Comunicazione Etica</td>
+          <td>Netiquette, responsabilità personale e contrasto al cyberbullismo.</td>
+          <td>Netiquette, personal responsibility and combating cyberbullying.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div><!-- end tab-home -->
+
+<!-- ==================== TAB 2: FRAMEWORK ==================== -->
+<div id="tab-framework" class="tab-content">
+<div class="container">
+
+  <div class="section-title"><span class="section-icon">🇪🇺</span><h2>DigComp 2.2 — Il Framework Europeo</h2></div>
+
+  <div class="bilingual-block">
+    <div class="lang-it">
+      <div class="lang-label"><span class="lang-flag">🇮🇹</span> Italiano</div>
+      <p>Il Ministero adotta come riferimento il <strong>Quadro delle Competenze Digitali per i Cittadini (DigComp 2.2)</strong>, che struttura le competenze in cinque aree, declinando gli indicatori di prestazione per la maturità scolastica.</p>
+    </div>
+    <div class="lang-en">
+      <div class="lang-label"><span class="lang-flag">🇬🇧</span> English</div>
+      <p>The Ministry adopts the <strong>Digital Competence Framework for Citizens (DigComp 2.2)</strong> as its reference, structuring competences in five areas and defining performance indicators for upper-secondary school completion.</p>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Area DigComp 2.2</th><th>Descrittori (IT)</th><th>Descriptors (EN)</th><th>🌾 Contesto Agrario / Agricultural Context</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">Area 1<br>Alfabetizzazione su<br>Informazioni e Dati</td>
+          <td>Navigare, cercare, filtrare, valutare e gestire dati e informazioni digitali.</td>
+          <td>Browse, search, filter, evaluate, and manage digital data and information.</td>
+          <td>Valutare fonti scientifiche agrarie; analizzare dati meteo/PAC/prezzi di mercato.</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Area 2<br>Comunicazione e<br>Collaborazione</td>
+          <td>Interagire, condividere, partecipare alla cittadinanza online in modo responsabile.</td>
+          <td>Interact, share, engage in responsible online citizenship.</td>
+          <td>Partecipare a reti professionali agricole, evitare la diffusione di agrifake.</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Area 3<br>Creazione di<br>Contenuti Digitali</td>
+          <td>Sviluppare, integrare e rielaborare contenuti digitali complessi; rispettare copyright e licenze.</td>
+          <td>Develop, integrate, re-elaborate complex digital content; respect copyright and licences.</td>
+          <td>Produrre report agronomici, pubblicare contenuti divulgativi corretti, rispettare la proprietà intellettuale.</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Area 4<br>Sicurezza</td>
+          <td>Proteggere dispositivi, dati personali, privacy. Essere consapevoli dell'impatto ambientale del digitale.</td>
+          <td>Protect devices, personal data, privacy. Be aware of the environmental impact of digital technology.</td>
+          <td>Mettere in sicurezza dati aziendali (IoT, agricoltura di precisione). Comprendere l'inquinamento digitale.</td>
+        </tr>
+        <tr>
+          <td class="td-bold">Area 5<br>Risolvere Problemi</td>
+          <td>Identificare esigenze, risolvere problemi tecnici, usare strumenti digitali in modo innovativo.</td>
+          <td>Identify needs, solve technical problems, use digital tools innovatively.</td>
+          <td>Diagnosticare anomalie nei software agricoli, adottare IA per ottimizzare risorse idriche.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card-grid">
+    <div class="chart-container">
+      <div class="chart-title">Aree DigComp 2.2 — Livello di Priorità per l'Istituto Agrario</div>
+      <div class="chart-wrap"><canvas id="chartDigcomp"></canvas></div>
+    </div>
+    <div>
+      <div class="section-title"><span class="section-icon">🎓</span><h2>UNESCO MIL Framework</h2></div>
+      <div class="callout callout-blue">
+        <div class="callout-title">Media and Information Literacy (MIL)</div>
+        <p style="font-size:.88rem">L'UNESCO definisce la MIL come un insieme di competenze che <em>"dà potere ai cittadini di accedere, recuperare, comprendere, valutare e utilizzare, creare e condividere informazioni e contenuti mediali in tutti i formati, utilizzando vari strumenti, in modo critico, etico ed efficace."</em></p>
+        <p style="font-size:.82rem;color:var(--text-muted);margin-top:.5rem;font-style:italic">"[MIL] empowers citizens to access, retrieve, understand, evaluate and use, create and share information and media content in all formats, using various tools, in a critical, ethical and effective way." — UNESCO</p>
+      </div>
+      <div class="callout callout-green" style="margin-top:1rem">
+        <div class="callout-title">📚 Legge 92/2019 — Art. 5: Cittadinanza Digitale</div>
+        <p style="font-size:.88rem">La norma esplicita le abilità logico-critiche e tecnologiche essenziali da sviluppare nei curricoli di Istituto con <strong>opportuna gradualità</strong> lungo l'intero percorso scolastico.</p>
+        <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">The law specifies the essential logical-critical and technological skills to be developed in the school curriculum with appropriate graduality throughout the entire school pathway.</p>
+      </div>
+      <div class="callout callout-amber" style="margin-top:1rem">
+        <div class="callout-title">🔗 Principio di Contitolarità</div>
+        <p style="font-size:.88rem">L'Educazione Civica è il <em>"vero sfondo integratore e punto di riferimento di tutte le discipline"</em>. Non una materia isolata, ma un impegno trasversale che coinvolge TUTTI i docenti del Consiglio di Classe (Italiano, Inglese, Scienze, Diritto…).</p>
+        <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">Civic Education is the "true integrating background and reference point for all disciplines" — a cross-curricular commitment involving ALL teachers.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-icon">📅</span><h2>Quadro Temporale Normativo · Regulatory Timeline</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Anno / Year</th><th>Evento (IT)</th><th>Event (EN)</th></tr></thead>
+      <tbody>
+        <tr><td class="td-bold">2008</td><td>Vertice UNESCO a Parigi: nasce il framework MIL (Media and Information Literacy).</td><td>UNESCO Summit in Paris: the MIL (Media and Information Literacy) framework is born.</td></tr>
+        <tr><td class="td-bold">2019</td><td>Legge 92/2019: l'Educazione Civica diventa materia curricolare obbligatoria (33h/anno).</td><td>Law 92/2019: Civic Education becomes a mandatory curricular subject (33h/year).</td></tr>
+        <tr><td class="td-bold">2020</td><td>DigComp 2.1 implementato nei curricoli italiani.</td><td>DigComp 2.1 implemented in Italian curricula.</td></tr>
+        <tr><td class="td-bold">2022</td><td>DigComp 2.2: versione aggiornata con focus su IA, deepfake e sostenibilità digitale.</td><td>DigComp 2.2: updated version focusing on AI, deepfakes and digital sustainability.</td></tr>
+        <tr><td class="td-bold">2024/25</td><td>Nuove Linee Guida MIUR: curricoli obbligatoriamente allineati ai traguardi nazionali aggiornati.</td><td>New MIUR Guidelines: curricula mandatorily aligned with updated national learning goals.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div><!-- end tab-framework -->
+
+<!-- ==================== TAB 3: PSICOLOGIA ==================== -->
+<div id="tab-psicologia" class="tab-content">
+<div class="container">
+
+  <div class="section-title"><span class="section-icon">🧠</span><h2>La Psicologia della Disinformazione · Psychology of Misinformation</h2></div>
+
+  <div class="bilingual-block">
+    <div class="lang-it">
+      <div class="lang-label"><span class="lang-flag">🇮🇹</span> Italiano</div>
+      <p>Fornire agli studenti una mera lista di strumenti tecnologici è pedagogicamente incompleto senza un'indagine sulle <strong>vulnerabilità cognitive intrinseche della mente umana</strong>. La disinformazione prospera perché sfrutta architetture psicologiche millenarie.</p>
+    </div>
+    <div class="lang-en">
+      <div class="lang-label"><span class="lang-flag">🇬🇧</span> English</div>
+      <p>Providing students with a mere list of technological tools is pedagogically incomplete without investigating the <strong>intrinsic cognitive vulnerabilities of the human mind</strong>. Disinformation thrives because it exploits millennia-old psychological architectures.</p>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>🔄 Bias di Conferma / Confirmation Bias</h3>
+      <p style="font-size:.88rem">Tendenza psicologica che induce a ricercare, interpretare, favorire e memorizzare solo le informazioni che confermano le proprie credenze pregresse. Qualsiasi dato contraddittorio viene ignorato o percepito come minaccia all'identità.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">Psychological tendency to seek, interpret, favor and remember only information that confirms pre-existing beliefs. Any contradictory data is ignored or perceived as a threat to identity.</p>
+    </div>
+    <div class="card">
+      <h3>😡 Emozioni vs Fatti</h3>
+      <p style="font-size:.88rem">Contenuti progettati per suscitare <strong>indignazione, panico, rabbia o paura</strong> hanno probabilità statisticamente superiori di essere condivisi rispetto a pacati resoconti fattuali. I meme virali e le infografiche manipolate soverchiano l'analisi logica.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">Content designed to trigger outrage, panic, anger or fear has statistically higher odds of being shared than calm factual reporting. Viral memes overwhelm logical analysis.</p>
+    </div>
+    <div class="card">
+      <h3>🤖 Algoritmi & Omofilia</h3>
+      <p style="font-size:.88rem">Gli algoritmi dei feed sfruttano l'<strong>omofilia</strong> — la propensione ad associarsi con persone simili. Il modello di business si fonda sull'estrazione dell'attenzione prolungata, non sulla qualità dell'informazione.</p>
+      <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">Feed algorithms exploit <em>homophily</em> — the tendency to associate with similar people. The business model is built on extracting prolonged attention, not on information quality.</p>
+    </div>
+  </div>
+
+  <!-- Echo chambers -->
+  <div class="section-title"><span class="section-icon">🫧</span><h2>Echo Chamber &amp; Filter Bubble</h2></div>
+  <div class="callout callout-amber">
+    <div class="callout-title">⚠️ Come funziona la bolla informativa / How the information bubble works</div>
+    <p style="font-size:.88rem">La convergenza tra bias cognitivi e algoritmi di raccomandazione genera le <strong>camere dell'eco</strong>: recinti digitali polarizzati in cui gli utenti sono esposti incessantemente allo stesso tipo di informazioni radicalizzate. La ripetizione ossessiva di una fake news aumenta la probabilità che venga interiorizzata come verità.</p>
+    <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">The convergence of cognitive biases and recommendation algorithms creates <strong>echo chambers</strong>: polarized digital enclosures where users are continuously exposed to the same type of radicalized information. Obsessive repetition of a fake news story increases the likelihood it is internalized as truth.</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="chart-container">
+      <div class="chart-title">Meccanismi di diffusione: emotivo vs. fattuale</div>
+      <div class="chart-wrap"><canvas id="chartEmotion"></canvas></div>
+    </div>
+    <div>
+      <h3>🔬 Prebunking vs Debunking</h3>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)">🩺 Debunking — Smentire dopo <span class="accordion-chevron">▼</span></button>
+          <div class="accordion-body">
+            <p>Il <strong>debunking</strong> interviene a posteriori, quando la credenza falsa si è già sedimentata nell'identità dell'utente. La smentita tardiva è spesso inefficace: le persone resistono alle correzioni che minacciano la loro visione del mondo.</p>
+            <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>Debunking</strong> intervenes after the false belief has already settled in the user's identity. Late correction is often ineffective: people resist corrections that threaten their worldview.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)">💉 Prebunking — Immunizzare prima <span class="accordion-chevron">▼</span></button>
+          <div class="accordion-body">
+            <p>Assimilabile al meccanismo biologico di un <strong>vaccino</strong>: si espongono preventivamente gli studenti a versioni depotenziate delle tecniche di manipolazione (falsi esperti, false dicotomie, appello all'emozione, vittimismo), attivando gli "anticorpi cognitivi" prima del contagio.</p>
+            <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">Like a <strong>vaccine</strong>: students are proactively exposed to weakened versions of manipulation techniques (fake experts, false dichotomies, emotional appeals, victimhood), activating "cognitive antibodies" before exposure to real disinformation.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)">👁 Effetto Spettatore <span class="accordion-chevron">▼</span></button>
+          <div class="accordion-body">
+            <p>Il prebunking combatte l'<strong>effetto spettatore</strong>, responsabilizzando il cittadino digitale: ogni click, like o condivisione alimenta la macchina del fango — o promuove la chiarezza nell'ecosistema dell'informazione.</p>
+            <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">Prebunking combats the <strong>bystander effect</strong>, making digital citizens accountable: every click, like or share either feeds the misinformation machine — or promotes clarity in the information ecosystem.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout callout-green" style="margin-top:1rem">
+        <div class="callout-title">🎯 Tecniche di Manipolazione da Riconoscere</div>
+        <ul style="font-size:.85rem;padding-left:1.2rem">
+          <li><strong>Falsi esperti</strong> — <em>Fake experts</em></li>
+          <li><strong>False dicotomie</strong> — <em>False dichotomies / black-and-white thinking</em></li>
+          <li><strong>Appello all'emozione</strong> — <em>Emotional appeal / fear-mongering</em></li>
+          <li><strong>Ciliegio selettivo</strong> — <em>Cherry-picking data</em></li>
+          <li><strong>Whataboutism</strong> — <em>Whataboutism</em></li>
+          <li><strong>Slippery slope</strong> — <em>Slippery slope fallacy</em></li>
+          <li><strong>Ricorso al vittimismo</strong> — <em>Victimhood narrative</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-icon">🦠</span><h2>Infodemia / Infodemic</h2></div>
+  <div class="bilingual-block">
+    <div class="lang-it">
+      <div class="lang-label"><span class="lang-flag">🇮🇹</span> Definizione OMS</div>
+      <p>L'<strong>infodemia</strong> è una sovrabbondanza di informazioni, alcune accurate e alcune no, che rende difficile trovare fonti affidabili e orientamenti attendibili quando se ne ha bisogno. Il termine è stato usato estensivamente durante la pandemia COVID-19 ma si applica a qualsiasi crisi informativa.</p>
+    </div>
+    <div class="lang-en">
+      <div class="lang-label"><span class="lang-flag">🇬🇧</span> WHO Definition</div>
+      <p>An <strong>infodemic</strong> is an overabundance of information — some accurate, some not — making it hard to find trustworthy sources and reliable guidance when it is needed. The term was extensively used during the COVID-19 pandemic but applies to any information crisis.</p>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Concetto / Concept</th><th>Definizione (IT)</th><th>Definition (EN)</th><th>Esempio Agrario / Agricultural Example</th></tr></thead>
+      <tbody>
+        <tr><td class="td-bold">Misinformazione</td><td>Informazione falsa diffusa senza intento deliberato.</td><td>False information spread without deliberate intent.</td><td>Condividere dati obsoleti sui pesticidi senza verificarli.</td></tr>
+        <tr><td class="td-bold">Disinformazione</td><td>Informazione falsa diffusa con intento deliberato di ingannare.</td><td>False information spread with deliberate intent to deceive.</td><td>Campagne organizzate contro gli OGM basate su dati falsificati.</td></tr>
+        <tr><td class="td-bold">Malinformazione</td><td>Informazione vera usata per nuocere.</td><td>True information used to cause harm.</td><td>Dati reali su pesticidi decontestualizzati per demonizzare un'azienda.</td></tr>
+        <tr><td class="td-bold">Post-verità</td><td>Contesto in cui le emozioni influenzano l'opinione più dei fatti.</td><td>Context where emotions shape opinion more than facts.</td><td>"Il biologico è sempre meglio" — slogan emotivo senza analisi.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div><!-- end tab-psicologia -->
+
+<!-- ==================== TAB 4: AGRIDIGITAL ==================== -->
+<div id="tab-agridigital" class="tab-content">
+<div class="container">
+
+  <div class="section-title"><span class="section-icon">🌾</span><h2>AgriDigital — Fake News nel Settore Agroalimentare</h2></div>
+
+  <div class="callout callout-amber">
+    <div class="callout-title">🎯 Cos'è l'Agrifake? / What is Agrifake?</div>
+    <p style="font-size:.88rem">Il termine <strong>"Agrifake"</strong>, coniato nel panorama accademico italiano (Prof. Roberto Pilu, Università di Milano), descrive l'universo delle bufale che inquinano il mondo dell'agricoltura. L'agricoltura, la zootecnia, le biotecnologie e le scienze ambientali sono tra i bersagli prediletti di narrazioni pseudoscientifiche, allarmismi infondati e fake news strumentali.</p>
+    <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">The term <strong>"Agrifake"</strong>, coined in Italian academia (Prof. Roberto Pilu, University of Milan), describes the universe of hoaxes polluting the world of agriculture. Agriculture, livestock farming, biotechnology and environmental sciences are among the primary targets of pseudoscientific narratives and instrumental fake news.</p>
+  </div>
+
+  <!-- Metodo scientifico -->
+  <div class="section-title"><span class="section-icon">🔬</span><h2>Il Metodo Scientifico come Antidoto · Scientific Method as Antidote</h2></div>
+  <div class="card-grid-3">
+    <div class="card" style="border-top:4px solid #1b5e20;text-align:center">
+      <div style="font-size:2rem;margin-bottom:.5rem">💡</div>
+      <div class="td-bold" style="font-size:1rem;margin-bottom:.4rem">1. Ipotesi / Hypothesis</div>
+      <p style="font-size:.85rem">Formulazione logica di una possibile spiegazione al fenomeno osservato.</p>
+      <p style="font-size:.8rem;color:var(--text-muted);font-style:italic">Logical formulation of a possible explanation for the observed phenomenon.</p>
+    </div>
+    <div class="card" style="border-top:4px solid #2e7d32;text-align:center">
+      <div style="font-size:2rem;margin-bottom:.5rem">🧪</div>
+      <div class="td-bold" style="font-size:1rem;margin-bottom:.4rem">2. Sperimentazione / Experiment</div>
+      <p style="font-size:.85rem">Disegno rigoroso di prove empiriche controllate per testare l'ipotesi.</p>
+      <p style="font-size:.8rem;color:var(--text-muted);font-style:italic">Rigorous design of controlled empirical tests to test the hypothesis.</p>
+    </div>
+    <div class="card" style="border-top:4px solid #4caf50;text-align:center">
+      <div style="font-size:2rem;margin-bottom:.5rem">📊</div>
+      <div class="td-bold" style="font-size:1rem;margin-bottom:.4rem">3. Dimostrazione / Proof</div>
+      <p style="font-size:.85rem">Analisi statistica dei dati che valida o confuta l'ipotesi di partenza.</p>
+      <p style="font-size:.8rem;color:var(--text-muted);font-style:italic">Statistical data analysis validating or refuting the initial hypothesis.</p>
+    </div>
+    <div class="card" style="border-top:4px solid var(--amber);text-align:center;grid-column:span 1">
+      <div style="font-size:2rem;margin-bottom:.5rem">🔁</div>
+      <div class="td-bold" style="font-size:1rem;margin-bottom:.4rem">4. Ripetibilità / Replicability</div>
+      <p style="font-size:.85rem">Il cardine supremo: un esperimento scientifico deve poter essere replicato da ricercatori indipendenti in qualsiasi parte del mondo, producendo gli stessi risultati.</p>
+      <p style="font-size:.8rem;color:var(--text-muted);font-style:italic">The supreme cornerstone: a scientific experiment must be replicable by independent researchers anywhere in the world, producing the same results.</p>
+    </div>
+  </div>
+
+  <!-- Polarizzazione terminologica -->
+  <div class="callout callout-red" style="margin-top:1.5rem">
+    <div class="callout-title">⚠️ La Trappola della Polarizzazione Terminologica / The Terminology Polarization Trap</div>
+    <p style="font-size:.88rem">I disinformatori usano termini accattivanti (<em>naturale, green, sostenibile, biologico</em>) associati a immagini di purezza, mentre demonizzano concetti scientifici (<em>OGM, TEA, biotecnologie</em>) senza alcuna base empirica. Questo meccanismo psicologico è estremamente efficace e difficile da smontare.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.75rem">
+      <div style="background:rgba(0,150,0,.1);padding:.75rem;border-radius:8px;font-size:.85rem">✅ <strong>Termine "rassicurante":</strong><br>Naturale • Biologico • Green • Tradizionale • Km0<br><em style="font-size:.78rem;color:var(--text-muted)">"Reassuring" terms evoking safety</em></div>
+      <div style="background:rgba(200,0,0,.1);padding:.75rem;border-radius:8px;font-size:.85rem">❌ <strong>Termine "demonizzato":</strong><br>OGM • TEA • Pesticidi • Biotecnologie • Additivi<br><em style="font-size:.78rem;color:var(--text-muted)">"Demonized" terms triggering fear</em></div>
+    </div>
+  </div>
+
+  <!-- Case studies -->
+  <div class="section-title"><span class="section-icon">📁</span><h2>Casi Studio / Case Studies</h2></div>
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-btn" onclick="toggleAcc(this)">🌡️ Caso 1: Cambiamento Climatico — Negazionismo e Greenwashing <span class="accordion-chevron">▼</span></button>
+      <div class="accordion-body">
+        <p><strong>Il problema:</strong> L'informazione sul clima è pesantemente inquinata da due fronti opposti. I <em>"mercanti del dubbio"</em> minano la credibilità dell'IPCC. Sul versante opposto, il <strong>greenwashing</strong> ingannevole di multinazionali dell'agrobusiness si spaccia per sostenibilità.</p>
+        <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>The problem:</strong> Climate information is heavily polluted from two opposite directions. "Merchants of doubt" undermine the IPCC's credibility. On the other side, deceptive <strong>greenwashing</strong> by agribusiness multinationals masquerades as sustainability.</p>
+        <p><strong>Come smascherarlo:</strong> Confrontare i dati IPCC con le affermazioni; cercare i finanziatori di ogni campagna (Lateral Reading); verificare che gli obiettivi ambientali siano misurabili e misurati.</p>
+        <div class="tag-list"><span class="tag tag-red">Negazionismo</span><span class="tag tag-amber">Greenwashing</span><span class="tag tag-blue">IPCC</span><span class="tag">Agenda 2030</span></div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-btn" onclick="toggleAcc(this)">🥩 Caso 2: Carni Sintetiche e Sostituti Vegetali — Le 5 Fake News <span class="accordion-chevron">▼</span></button>
+      <div class="accordion-body">
+        <p><strong>Fake News 1 — Equivalenza nutrizionale:</strong> La metabolomica dimostra che i sostituti vegetali differiscono dai prodotti animali per oltre il <strong>90% dei componenti</strong>. Le dichiarazioni di equivalenza sulle etichette sono fuorvianti.</p>
+        <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>Fake News 1 — Nutritional equivalence:</strong> Metabolomics shows that plant-based substitutes differ from animal products in over <strong>90% of their components</strong>. Equivalence claims on labels are misleading.</p>
+        <p><strong>Fake News 2 — Trasparenza scientifica:</strong> Per la "carne coltivata", i ricercatori indipendenti segnalano la sistematica <strong>impossibilità di reperire campioni</strong> per test laboratoriali. Le aziende non condividono dati per una corretta peer-review.</p>
+        <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>Fake News 2 — Scientific transparency:</strong> For "cultured meat", independent researchers report the systematic <strong>impossibility of obtaining samples</strong> for laboratory tests. Companies withhold data from proper peer review.</p>
+        <p><strong>Fake News 3 — Successo di mercato:</strong> Il clamoroso fallimento del Veggie Burger (rimosso dai menù dei fast-food USA) dimostra che le campagne mediatiche non sempre riflettono la realtà.</p>
+        <div class="tag-list"><span class="tag tag-red">Metabolomica</span><span class="tag tag-amber">Peer Review</span><span class="tag">Made in Italy</span><span class="tag tag-blue">Zootecnia</span></div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-btn" onclick="toggleAcc(this)">🍷 Caso 3: Vino Italiano e il sistema Nutriscore <span class="accordion-chevron">▼</span></button>
+      <div class="accordion-body">
+        <p>Il sistema di etichettatura a semaforo <strong>Nutriscore</strong>, riducendo la complessità nutrizionale a un mero calcolo algebrico, penalizza gravemente le eccellenze tradizionali italiane (vino, olio d'oliva, Parmigiano Reggiano), promuovendo paradossalmente prodotti ultra-processati.</p>
+        <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">The <strong>Nutriscore</strong> traffic-light labelling system, reducing nutritional complexity to a mere algebraic calculation, severely penalises traditional Italian excellence (wine, olive oil, Parmigiano Reggiano), paradoxically promoting ultra-processed products.</p>
+        <p>Il vino, nella cornice della Dieta Mediterranea, se consumato con moderazione ai pasti, ha un ruolo riconosciuto. Imparare a decostruire queste disinformazioni istituzionalizzate è un dovere civico per i futuri tecnici agrari.</p>
+        <div class="tag-list"><span class="tag">Nutriscore</span><span class="tag tag-amber">Dieta Mediterranea</span><span class="tag">DOC/DOCG</span><span class="tag tag-blue">Politiche UE</span></div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-btn" onclick="toggleAcc(this)">🐛 Caso 4: Farine di Insetti e Nuovi Alimenti <span class="accordion-chevron">▼</span></button>
+      <div class="accordion-body">
+        <p>Le <strong>farine di insetti</strong> (es. farina di grillo) sono al centro di dibattiti spesso condizionati da <em>repulsioni emotive</em> piuttosto che da analisi scientifiche. Distinguere tra dati oggettivi, pregiudizi culturali e fake news strumentali è un esercizio didattico di grande valore.</p>
+        <p style="font-size:.82rem;color:var(--text-muted);font-style:italic"><strong>Insect flours</strong> (e.g. cricket flour) are at the centre of debates often driven by <em>emotional repulsion</em> rather than scientific analysis. Distinguishing between objective data, cultural prejudices and instrumental fake news is a highly valuable teaching exercise.</p>
+        <div class="tag-list"><span class="tag tag-amber">Novel Foods</span><span class="tag">Reg. UE 2015/2283</span><span class="tag tag-blue">Entomofagia</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fact Checking Lab -->
+  <div class="section-title"><span class="section-icon">🏛️</span><h2>Il Fact Checking Lab — Università Cattolica</h2></div>
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:1.5rem;align-items:start">
+      <div style="text-align:center;padding:1rem;background:var(--bg-sec);border-radius:10px">
+        <div style="font-size:3rem">🔬</div>
+        <div style="font-weight:700;color:var(--green-dark);font-size:1rem;margin-top:.5rem">Fact Checking Lab</div>
+        <div style="font-size:.78rem;color:var(--text-muted)">Università Cattolica<br>Piacenza &amp; Cremona</div>
+        <div style="font-size:.78rem;margin-top:.5rem">In collaborazione con<br><strong>IRCAF</strong></div>
+      </div>
+      <div>
+        <p style="font-size:.9rem">Nato all'interno del Dottorato in <em>Agro-Food System</em> su impulso del <strong>Prof. Paolo Ajmone Marsan</strong>, questo laboratorio è un'avanguardia interdisciplinare composta da dottorandi con competenze variegate: agronomia, veterinaria, biologia, comunicazione.</p>
+        <p style="font-size:.88rem">Il team collabora con l'<strong>IRCAF</strong> (Invernizzi Reference Center on Agri-Food) per sviscerare, verificare e confutare metodicamente le notizie fallaci nel comparto agroalimentare.</p>
+        <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">Born within the Agro-Food System PhD programme, this interdisciplinary lab is composed of doctoral students with diverse expertise — agronomy, veterinary science, biology, communication — working to systematically debunk false news in the agri-food sector.</p>
+        <div class="callout callout-green" style="margin-top:.75rem">
+          <div class="callout-title">🎯 Obiettivo didattico</div>
+          Insegnare agli studenti ad operare con la medesima strutturazione e multidisciplinarietà del Fact Checking Lab costituisce un obiettivo di straordinario pregio.<br>
+          <em style="font-size:.8rem">Teaching students to operate with the same structure and multidisciplinarity of the Fact Checking Lab is an outstanding educational goal.</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart agrifake -->
+  <div class="chart-container" style="margin-top:1.5rem">
+    <div class="chart-title">Principali Ambiti Bersagliati dalle Fake News Agroalimentari · Main Targets of Agri-Food Fake News</div>
+    <div class="chart-wrap"><canvas id="chartAgrifake"></canvas></div>
+  </div>
+
+</div>
+</div><!-- end tab-agridigital -->
+
+<!-- ==================== TAB 5: METODOLOGIE ==================== -->
+<div id="tab-metodologie" class="tab-content">
+<div class="container">
+
+  <div class="section-title"><span class="section-icon">🔍</span><h2>Metodologie di Fact-Checking · Fact-Checking Methodologies</h2></div>
+
+  <div class="bilingual-block">
+    <div class="lang-it">
+      <div class="lang-label"><span class="lang-flag">🇮🇹</span> Italiano</div>
+      <p>Smascherare la rete di inganni richiede un <strong>radar informativo sistematico</strong>. Non basta esortare gli studenti a "stare attenti"; occorre dotarli di metodologie di indagine rigorose: il CRAAP Test, la Lettura Laterale e gli strumenti OSINT.</p>
+    </div>
+    <div class="lang-en">
+      <div class="lang-label"><span class="lang-flag">🇬🇧</span> English</div>
+      <p>Unmasking the web of deception requires a <strong>systematic information radar</strong>. It is not enough to urge students to "be careful"; they must be equipped with rigorous investigation methodologies: the CRAAP Test, Lateral Reading and OSINT tools.</p>
+    </div>
+  </div>
+
+  <!-- CRAAP -->
+  <div class="section-title"><span class="section-icon">📋</span><h2>Il CRAAP Test — Analisi Verticale delle Fonti</h2></div>
+  <div class="callout callout-blue">
+    <div class="callout-title">📚 Origine / Origin</div>
+    <p style="font-size:.85rem">Sviluppato dalla biblioteca della <strong>California State University (CSU Chico)</strong>, il CRAAP Test è un protocollo di fact-checking intensivo che trasforma il sospetto istintivo in un processo analitico automatico, attraverso cinque parametri di valutazione.</p>
+    <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">Developed by <strong>California State University (CSU Chico)</strong> library, the CRAAP Test is an intensive fact-checking protocol that transforms instinctive suspicion into an automatic analytical process, through five evaluation parameters.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Parametro / Parameter</th><th>Domande Guida (IT)</th><th>Key Questions (EN)</th><th>🌾 Rilevanza Agraria / Agricultural Relevance</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="td-bold">⏰ C — Currency<br><em>Attualità</em></td>
+          <td>Quando è stata prodotta/revisionata? I link funzionano?</td>
+          <td>When was it produced/updated? Are links working?</td>
+          <td>La normativa PAC, i dati climatici e le autorizzazioni fitosanitarie evolvono rapidamente. Dati di 10 anni fa possono condurre a errori decisionali gravi.</td>
+        </tr>
+        <tr>
+          <td class="td-bold">📌 R — Relevance<br><em>Rilevanza</em></td>
+          <td>Risponde al tuo quesito? A quale pubblico è indirizzato?</td>
+          <td>Does it answer your question? For what audience is it intended?</td>
+          <td>Distinguere tra articoli di intrattenimento e paper scientifici peer-reviewed o direttive ministeriali.</td>
+        </tr>
+        <tr>
+          <td class="td-bold">👤 A — Authority<br><em>Autorevolezza</em></td>
+          <td>Chi è l'autore? Ha credenziali verificabili? Qual è il dominio?</td>
+          <td>Who is the author? Do they have verifiable credentials? What is the domain?</td>
+          <td>Identificare i finanziatori di uno studio svela conflitti d'interesse. Prediligere domini .gov/.edu rispetto a siti commerciali anonimi.</td>
+        </tr>
+        <tr>
+          <td class="td-bold">✅ A — Accuracy<br><em>Accuratezza</em></td>
+          <td>È corroborato da dati e citazioni tracciabili? Il linguaggio è neutro?</td>
+          <td>Is it supported by traceable data and citations? Is the language neutral?</td>
+          <td>Applicare i principi del metodo scientifico: separare opinioni sensazionalistiche da dati peer-reviewed.</td>
+        </tr>
+        <tr>
+          <td class="td-bold">🎯 P — Purpose<br><em>Scopo</em></td>
+          <td>Informa, persuade, vende o polarizza? Qual è l'intento celato?</td>
+          <td>Does it inform, persuade, sell or polarize? What is the hidden intent?</td>
+          <td>Strumento fondamentale per individuare greenwashing corporativo, campagne contro la zootecnia e clickbait pubblicitari.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card-grid">
+    <div class="chart-container">
+      <div class="chart-title">CRAAP Test — Bilanciamento delle 5 Dimensioni</div>
+      <div class="chart-wrap"><canvas id="chartCraap"></canvas></div>
+    </div>
+    <div>
+      <div class="callout callout-amber">
+        <div class="callout-title">⚠️ Il Limite del CRAAP Test</div>
+        <p style="font-size:.88rem">Studi dello <strong>Stanford History Education Group (SHEG)</strong> dimostrano che la sola "lettura verticale" non basta. Gruppi di pressione ben finanziati confezionano siti visivamente impeccabili con finta bibliografia, superando facilmente un esame superficiale del CRAAP.</p>
+        <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">Studies from the <strong>Stanford History Education Group (SHEG)</strong> show that "vertical reading" alone is insufficient. Well-funded pressure groups create visually impeccable websites with fake bibliographies that easily pass a superficial CRAAP examination.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lateral Reading -->
+  <div class="section-title"><span class="section-icon">↔️</span><h2>Lettura Laterale / Lateral Reading</h2></div>
+  <div class="bilingual-block">
+    <div class="lang-it">
+      <div class="lang-label"><span class="lang-flag">🇮🇹</span> Italiano</div>
+      <p>I fact-checker professionisti non si limitano a valutare il contenuto isolato: abbandonano la pagina sospetta, aprono nuove schede e <strong>interrogano fonti terze</strong> sull'organizzazione o sull'autore. Non si chiede al sito chi esso sia — si chiedono fonti indipendenti.</p>
+    </div>
+    <div class="lang-en">
+      <div class="lang-label"><span class="lang-flag">🇬🇧</span> English</div>
+      <p>Professional fact-checkers don't just evaluate isolated content: they leave the suspicious page, open new tabs and <strong>query third-party sources</strong> about the organization or author. Don't ask the site who it is — ask independent sources.</p>
+    </div>
+  </div>
+
+  <ul class="steps-list" style="margin-top:1rem">
+    <li class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h4>Identifica l'affermazione / Identify the claim</h4>
+        <p>Isola la notizia o l'affermazione specifica da verificare. / Isolate the specific news or claim to verify.</p>
+      </div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h4>Abbandona la pagina / Leave the page</h4>
+        <p>Non leggere oltre nel sito sospetto. Apri nuove schede del browser. / Don't read further on the suspicious site. Open new browser tabs.</p>
+      </div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h4>Cerca l'organizzazione / Search the organization</h4>
+        <p>Chi ha pubblicato la notizia? Cerca il nome dell'organizzazione + "critiche", "finanziatori", "chi sono". / Who published it? Search the organization name + "criticism", "funding", "who are they".</p>
+      </div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h4>Confronta fonti autorevoli / Compare authoritative sources</h4>
+        <p>La notizia è riportata da fonti scientifiche, istituzionali o giornalistiche verificabili? / Is the news covered by verifiable scientific, institutional or journalistic sources?</p>
+      </div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h4>Tira le conclusioni / Draw conclusions</h4>
+        <p>Ora hai il quadro completo per valutare l'attendibilità della fonte originale. / Now you have the full picture to assess the credibility of the original source.</p>
+      </div>
+    </li>
+  </ul>
+
+  <!-- OSINT -->
+  <div class="section-title"><span class="section-icon">🕵️</span><h2>Strumenti OSINT · Open Source Intelligence Tools</h2></div>
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-icon">🖼️</div>
+      <div class="tool-name">TinEye / Yandex Images</div>
+      <div class="tool-desc">Ricerca inversa immagini: verifica se la foto di un "disastro ambientale" è reale o è un'immagine decontestualizzata. / Reverse image search: check if a photo of an "environmental disaster" is real or decontextualized.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">🗄️</div>
+      <div class="tool-name">Wayback Machine</div>
+      <div class="tool-desc">Archive.org: recupera versioni storiche di siti web. Scopri se un'azienda ha rimosso promesse di sostenibilità tradite. / Retrieves historical versions of websites. Discover if a company removed broken sustainability promises.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">🗺️</div>
+      <div class="tool-name">Google Maps / Mapillary</div>
+      <div class="tool-desc">Geolocalizzazione visiva: verifica se un evento si è effettivamente verificato nel luogo dichiarato. / Visual geolocation: verify if an event actually occurred in the declared location.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">📋</div>
+      <div class="tool-name">Metadata2Go / ExifTool</div>
+      <div class="tool-desc">Estrazione metadati EXIF: rivela data/ora esatte, dispositivo e coordinate GPS di una foto. Prova inconfutabile di falsificazione. / EXIF metadata extraction: reveals exact date/time, device and GPS coordinates. Irrefutable proof of tampering.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">✅</div>
+      <div class="tool-name">Pagella Politica / ANSA Fact-check</div>
+      <div class="tool-desc">Piattaforme italiane di debunking professionale. Consultare prima di condividere notizie di carattere scientifico-agrario. / Italian professional debunking platforms. Check before sharing agricultural/scientific news.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">🔍</div>
+      <div class="tool-name">Google Scholar / PubMed</div>
+      <div class="tool-desc">Ricerca di letteratura scientifica peer-reviewed. La fonte primaria per verificare affermazioni in campo agroalimentare e zootecnico. / Search peer-reviewed scientific literature — the primary source for verifying agri-food and livestock claims.</div>
+    </div>
+  </div>
+
+  <!-- CRAAP Race -->
+  <div class="section-title"><span class="section-icon">🏁</span><h2>La CRAAP Race — Attività Didattica</h2></div>
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:1.5rem;align-items:start">
+      <div style="text-align:center;padding:1.5rem;background:linear-gradient(135deg,#e8f5e9,#fff9c4);border-radius:12px">
+        <div style="font-size:3rem">🏁</div>
+        <div style="font-weight:700;color:var(--green-dark);font-size:1.1rem;margin-top:.5rem">CRAAP Race</div>
+        <div style="font-size:.8rem;color:var(--text-muted);margin-top:.3rem">Apprendimento attivo,<br>competitivo e cooperativo</div>
+      </div>
+      <div>
+        <p style="font-size:.9rem">L'insegnante fornisce una lista di URL contenenti sia <strong>fonti scientifiche impeccabili</strong> sia <strong>siti di sofisticata disinformazione</strong>. Gli studenti, divisi in gruppi, gareggiano per valutare, decostruire e classificare correttamente ogni fonte.</p>
+        <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">The teacher provides a list of URLs containing both <strong>impeccable scientific sources</strong> and <strong>sophisticated disinformation sites</strong>. Students in groups compete to correctly evaluate, deconstruct and classify each source.</p>
+        <ul style="font-size:.85rem;padding-left:1.2rem;margin-top:.5rem">
+          <li>⏱️ Tempo limite per ogni fonte / Time limit per source</li>
+          <li>📊 Scheda CRAAP da compilare per ogni URL / CRAAP sheet to complete for each URL</li>
+          <li>🏆 Punteggio per accuratezza e motivazione / Points for accuracy and reasoning</li>
+          <li>🌾 URL a tema agrario e agroalimentare / Agricultural-themed URLs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div><!-- end tab-metodologie -->
+
+<!-- ==================== TAB 6: ASPETTI LEGALI ==================== -->
+<div id="tab-legale" class="tab-content">
+<div class="container">
+
+  <div class="section-title"><span class="section-icon">⚖️</span><h2>Responsabilità Civile e Penale nel Cyberspazio</h2></div>
+
+  <div class="callout callout-red">
+    <div class="callout-title">⚠️ Il Cyberspazio NON è una Zona Franca / Cyberspace is NOT a No-Law Zone</div>
+    <p style="font-size:.88rem">Il cyberspazio è un'estensione diretta della società, sottoposta a regole ferree, tutele costituzionali e severe sanzioni penali e civili. La dissociazione tra atto digitale e conseguenze reali è una delle più pericolose illusioni giovanili.</p>
+    <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">Cyberspace is a direct extension of society, subject to strict rules, constitutional protections and severe criminal and civil sanctions. The dissociation between digital act and real consequences is one of the most dangerous youthful illusions.</p>
+  </div>
+
+  <!-- Imputabilità -->
+  <div class="section-title"><span class="section-icon">👤</span><h2>Imputabilità per Fasce d'Età · Criminal Liability by Age</h2></div>
+
+  <div class="card-grid">
+    <div>
+      <div class="legal-timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot dot-green"></div>
+          <div class="timeline-age">Under 14 anni — Non imputabili</div>
+          <div class="timeline-body">
+            <p style="font-size:.85rem">Art. 97 Cod. Pen.: <strong>presunzione assoluta di non imputabilità</strong>. Nessun processo penale, ma possibili misure di sicurezza (libertà vigilata, ricovero in comunità). Il risarcimento ricade integralmente sui genitori.</p>
+            <p style="font-size:.8rem;color:var(--text-muted);font-style:italic">Art. 97 Penal Code: <strong>absolute presumption of non-imputability</strong>. No criminal trial, but possible security measures (supervised probation). Compensation falls entirely on parents.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot dot-amber"></div>
+          <div class="timeline-age">14–18 anni — Imputabilità condizionata</div>
+          <div class="timeline-body">
+            <p style="font-size:.85rem">Art. 98 Cod. Pen.: imputabili se il giudice accerta la <strong>capacità di intendere e volere</strong>. Il Tribunale per i Minorenni favorisce la <strong>Messa alla Prova (MAP)</strong>: sospensione del processo con affidamento ai servizi sociali e lavori di pubblica utilità. Il risarcimento civile ricade sui genitori.</p>
+            <p style="font-size:.8rem;color:var(--text-muted);font-style:italic">Art. 98: liable if the judge ascertains <strong>capacity to understand and will</strong>. The Juvenile Court promotes <strong>Probation (MAP)</strong>: trial suspension with social services supervision and community service. Civil compensation falls on parents.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot dot-red"></div>
+          <div class="timeline-age">18+ anni — Piena responsabilità</div>
+          <div class="timeline-body">
+            <p style="font-size:.85rem">Piena, incondizionata e totale <strong>responsabilità penale e civile personale</strong>. Nessuna esimente minorile. Il proprio patrimonio risponde dei danni. Per la maggior parte degli studenti di quinta, questo già si applica!</p>
+            <p style="font-size:.8rem;color:var(--text-muted);font-style:italic">Full, unconditional and total <strong>personal criminal and civil liability</strong>. No juvenile exemptions. Personal assets are liable for damages. For most Year 13 students, this already applies!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-container">
+      <div class="chart-title">Scala della Responsabilità Digitale per Età</div>
+      <div class="chart-wrap"><canvas id="chartLegal"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Diffamazione -->
+  <div class="section-title"><span class="section-icon">📢</span><h2>Diffamazione Online · Online Defamation</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Fattispecie / Offence</th><th>Norma / Law</th><th>Descrizione (IT)</th><th>Description (EN)</th></tr></thead>
+      <tbody>
+        <tr><td class="td-bold">Diffamazione aggravata</td><td>Art. 595 c.p.</td><td>Offesa alla reputazione comunicata con più persone. I social costituiscono aggravante specifica per la vastità del pubblico raggiungibile.</td><td>Damaging reputation communicated to multiple people. Social media is a specific aggravating factor due to the vast audience reachable.</td></tr>
+        <tr><td class="td-bold">Corresponsabilità per sharing</td><td>Art. 595 c.p.</td><td>Anche la condivisione (share), il retweet o l'approvazione tramite like di contenuti illeciti configura corresponsabilità nel reato.</td><td>Even sharing, retweeting or approving illegal content with a like constitutes co-responsibility in the offence.</td></tr>
+        <tr><td class="td-bold">Revenge Porn</td><td>Art. 612-ter c.p.</td><td>Diffusione non consensuale di immagini intime. Il consenso originario di farsi fotografare NON equivale al consenso alla diffusione.</td><td>Non-consensual sharing of intimate images. Original consent to being photographed does NOT equal consent to distribution.</td></tr>
+        <tr><td class="td-bold">Oltraggio a Pubblico Ufficiale</td><td>Art. 341-bis c.p.</td><td>Insultare i docenti (pubblici ufficiali in servizio) in chat o social non è violazione disciplinare: è un reato penale grave.</td><td>Insulting teachers (public officials on duty) in chats or on social media is not a disciplinary violation: it is a serious criminal offence.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Cyberbullismo -->
+  <div class="section-title"><span class="section-icon">🛡️</span><h2>Cyberbullismo — Legge 71/2017</h2></div>
+  <div class="card-grid">
+    <div class="callout callout-blue">
+      <div class="callout-title">📋 Cosa prevede la Legge 71/2017</div>
+      <ul style="font-size:.85rem;padding-left:1.2rem">
+        <li style="margin-bottom:.4rem">Minori ≥14 anni: possono richiedere <strong>autonomamente</strong> la rimozione di contenuti offensivi ai gestori dei social entro 48h.</li>
+        <li style="margin-bottom:.4rem">Se il gestore non risponde: istanza al <strong>Garante Privacy</strong>.</li>
+        <li style="margin-bottom:.4rem"><strong>Ammonimento del Questore</strong>: convocazione formale del minore autore e di un genitore.</li>
+        <li>Efficace nell'interrompere i comportamenti prima che sfocino in processi penali.</li>
+      </ul>
+      <p style="font-size:.8rem;color:var(--text-muted);margin-top:.5rem;font-style:italic">Minors ≥14 can independently request removal of offensive content from social media managers within 48h. If the manager doesn't comply: escalation to the Data Protection Authority. The Police Chief's formal warning has proved highly effective.</p>
+    </div>
+    <div class="callout callout-green">
+      <div class="callout-title">🏫 Responsabilità della Scuola</div>
+      <ul style="font-size:.85rem;padding-left:1.2rem">
+        <li style="margin-bottom:.4rem"><strong>Culpa in vigilando (docenti):</strong> Gli insegnanti rispondono dei danni causati da alunni durante la loro sorveglianza.</li>
+        <li style="margin-bottom:.4rem"><strong>Culpa in organizzando (dirigenti):</strong> I presidi rispondono di carenze organizzative nell'istituto.</li>
+        <li><strong>Obbligo di denuncia (art. 361 c.p.):</strong> I docenti (Pubblici Ufficiali) DEVONO denunciare reati procedibili d'ufficio (es. pedopornografia, estorsione). L'omessa denuncia è essa stessa un reato.</li>
+      </ul>
+      <p style="font-size:.8rem;color:var(--text-muted);margin-top:.5rem;font-style:italic">Teachers bear liability for damages caused by students under their supervision. School principals bear liability for organisational failures. Teachers as Public Officials MUST report certain crimes.</p>
+    </div>
+  </div>
+
+  <!-- Responsabilità genitoriale -->
+  <div class="section-title"><span class="section-icon">👨‍👩‍👧</span><h2>Responsabilità Genitoriale · Parental Responsibility</h2></div>
+  <div class="callout callout-amber">
+    <div class="callout-title">⚖️ Art. 2048 Codice Civile — Culpa in Educando</div>
+    <p style="font-size:.88rem">I genitori rispondono dei fatti illeciti dei figli minori conviventi. Il comportamento antigiuridico del ragazzo è considerato prova che i genitori hanno mancato al dovere di impartire un'adeguata educazione, anche in materia di <em>civismo digitale</em>.</p>
+    <p style="font-size:.85rem;margin-top:.5rem">La <strong>prova liberatoria</strong> (dimostrare di non aver potuto impedire il fatto) è estremamente difficile da fornire e raramente accolta dai tribunali.</p>
+    <p style="font-size:.82rem;color:var(--text-muted);font-style:italic">Parents are liable for the wrongful acts of their cohabiting minor children. The child's unlawful behaviour is considered proof that parents failed in their duty to provide adequate education, including in digital citizenship. The <strong>exculpatory proof</strong> is extremely difficult to provide.</p>
+  </div>
+
+  <!-- GDPR -->
+  <div class="section-title"><span class="section-icon">🔐</span><h2>GDPR e Privacy Digitale</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Aspetto / Aspect</th><th>Norma (IT)</th><th>Rule (EN)</th></tr></thead>
+      <tbody>
+        <tr><td class="td-bold">Età del consenso</td><td>Art. 8 GDPR: 16 anni per consentire all'uso dei dati propri per servizi digitali. In Italia la soglia è abbassata a 13 anni con autorizzazione genitoriale.</td><td>Art. 8 GDPR: 16 years to consent to own data use for digital services. Italy lowered to 13 with parental authorization.</td></tr>
+        <tr><td class="td-bold">Protezione dei minori nei media</td><td>Oscurare il volto non basta: inquadrare la scuola frequentata, il paese o il nome degli amici rende identificabile il minore — ed è illegale.</td><td>Blurring the face is insufficient: showing the school attended, the village or friends' names makes the minor identifiable — and it is illegal.</td></tr>
+        <tr><td class="td-bold">Globalizzazione del danno</td><td>Le immagini diffuse su internet raggiungono immediatamente tutto il mondo, esponendo le famiglie di origine a ritorsioni o stigmatizzazioni.</td><td>Images shared online immediately reach the whole world, exposing families of origin to retaliation or stigmatization.</td></tr>
+        <tr><td class="td-bold">Policy vs Legge</td><td>Ciò che una piattaforma "permette" non è necessariamente legale o moralmente accettabile. La giurisdizione dello Stato prevale sulle convenienze delle Big Tech.</td><td>What a platform "allows" is not necessarily legal or morally acceptable. State jurisdiction prevails over Big Tech business interests.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div><!-- end tab-legale -->
+
+<!-- ==================== TAB 7: GLOSSARIO ==================== -->
+<div id="tab-glossario" class="tab-content">
+<div class="container">
+
+  <div class="section-title"><span class="section-icon">📖</span><h2>Glossario Bilingue — Italiano / English</h2></div>
+
+  <div class="glossary-controls">
+    <input class="glossary-search" type="search" id="glossSearch" placeholder="🔍 Cerca termine / Search term..." oninput="filterGlossary()">
+    <div class="filter-btns">
+      <button class="filter-btn active-all" id="filterAll" onclick="setFilter('all', this)">🌐 Tutti / All</button>
+      <button class="filter-btn" id="filterDig" onclick="setFilter('digitale', this)">💻 Digitale</button>
+      <button class="filter-btn" id="filterAgri" onclick="setFilter('agrario', this)">🌾 Agrario</button>
+      <button class="filter-btn" id="filterLeg" onclick="setFilter('legale', this)">⚖️ Legale</button>
+      <button class="filter-btn" id="filterPsych" onclick="setFilter('psicologia', this)">🧠 Psicologia</button>
+    </div>
+  </div>
+
+  <div class="glossary-grid" id="glossaryGrid">
+    <!-- Cards injected by JS -->
+  </div>
+
+  <p id="noResults" class="no-results" style="display:none">🔍 Nessun termine trovato / No terms found</p>
+
+</div>
+</div><!-- end tab-glossario -->
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div><strong>IIS "Gregorio Mendel"</strong> — Istituto Tecnico Agrario · Via Nazioni Unite, 1 · 20020 Villa Cortese (MI)</div>
+  <hr class="footer-divider">
+  <div>📚 Questa pagina è stata realizzata dall'<strong>IIS Mendel di Villa Cortese (MI)</strong> esclusivamente per finalità didattiche e di uso interno nell'ambito dell'Educazione Civica e della Cittadinanza Digitale.<br>
+  <em style="font-size:.8rem;opacity:.75">This page has been created by IIS Mendel (Villa Cortese, MI) solely for educational and internal use within the Civic Education and Digital Citizenship curriculum.</em></div>
+  <div class="footer-links">
+    <a href="https://agrariomendel.edu.it" target="_blank">🌐 agrariomendel.edu.it</a>
+    <a href="https://www.mim.gov.it" target="_blank">📋 MIUR</a>
+    <a href="https://digcomp.jrc.ec.europa.eu/" target="_blank">🇪🇺 DigComp 2.2</a>
+    <a href="https://www.unesco.org/en/media-information-literacy" target="_blank">🎓 UNESCO MIL</a>
+    <a href="https://www.georgofili.it" target="_blank">🌾 Accademia dei Georgofili</a>
+  </div>
+  <div style="margin-top:.75rem;font-size:.75rem;opacity:.55">A.S. 2024/25 · Versione 1.0 · Contenuti basati su ricerca accademica e normativa vigente · Tutti i diritti riservati</div>
+</footer>
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+/* ====== DARK MODE ====== */
+function toggleDark() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('darkBtn').textContent = isDark ? '🌙 Dark' : '☀️ Light';
+  updateChartColors();
+}
+
+/* ====== TABS ====== */
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ====== ACCORDION ====== */
+function toggleAcc(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  btn.closest('.accordion').querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+  btn.closest('.accordion').querySelectorAll('.accordion-btn').forEach(b => b.classList.remove('open'));
+  if (!isOpen) { body.classList.add('open'); btn.classList.add('open'); }
+}
+
+/* ====== GLOSSARY DATA ====== */
+const glossaryData = [
+  { it: "Disinformazione", en: "Disinformation", cat: "digitale", defIt: "Diffusione deliberata e intenzionale di informazioni false con l'obiettivo di ingannare.", defEn: "Deliberate and intentional spread of false information with the aim to deceive." },
+  { it: "Misinformazione", en: "Misinformation", cat: "digitale", defIt: "Diffusione non intenzionale di informazioni errate o inesatte.", defEn: "Unintentional spread of incorrect or inaccurate information." },
+  { it: "Malinformazione", en: "Malinformation", cat: "digitale", defIt: "Informazioni vere usate con l'intento di nuocere a persone, organizzazioni o Paesi.", defEn: "True information used with the intent to harm people, organisations or countries." },
+  { it: "Fake news", en: "Fake news", cat: "digitale", defIt: "Notizie false confezionate per sembrare autentiche, spesso progettate per ingannare.", defEn: "False news designed to appear authentic, often engineered to deceive." },
+  { it: "Post-verità", en: "Post-truth", cat: "psicologia", defIt: "Contesto in cui le emozioni e le credenze personali influenzano l'opinione pubblica più dei fatti oggettivi.", defEn: "Context where emotions and personal beliefs influence public opinion more than objective facts." },
+  { it: "Infodemia", en: "Infodemic", cat: "psicologia", defIt: "Sovrabbondanza di informazioni, accurate e non, che rende difficile orientarsi e trovare fonti affidabili.", defEn: "Overabundance of information, accurate and otherwise, making it difficult to navigate and find reliable sources." },
+  { it: "Bias cognitivo", en: "Cognitive bias", cat: "psicologia", defIt: "Distorsione sistematica del ragionamento umano che influenza giudizi e decisioni.", defEn: "Systematic distortion of human reasoning that influences judgements and decisions." },
+  { it: "Bias di conferma", en: "Confirmation bias", cat: "psicologia", defIt: "Tendenza a cercare, interpretare e ricordare solo le informazioni che confermano le proprie credenze pregresse.", defEn: "Tendency to search, interpret and remember only information confirming pre-existing beliefs." },
+  { it: "Camera dell'eco", en: "Echo chamber", cat: "psicologia", defIt: "Ambiente informativo chiuso in cui le credenze degli utenti vengono amplificate e rinforzate dalla ripetizione.", defEn: "Closed information environment where users' beliefs are amplified and reinforced through repetition." },
+  { it: "Filter bubble", en: "Filter bubble", cat: "digitale", defIt: "Isolamento algoritmico che limita l'esposizione a informazioni diverse dalle proprie, creato dai sistemi di raccomandazione.", defEn: "Algorithmic isolation limiting exposure to information different from one's own, created by recommendation systems." },
+  { it: "Prebunking", en: "Prebunking", cat: "digitale", defIt: "Tecnica preventiva che espone in anticipo gli studenti alle tecniche di manipolazione per immunizzarli contro la disinformazione.", defEn: "Preventive technique proactively exposing students to manipulation techniques to immunise them against disinformation." },
+  { it: "Debunking", en: "Debunking", cat: "digitale", defIt: "Smascheramento e confutazione di false informazioni già diffuse nel pubblico.", defEn: "Exposing and refuting false information already circulated in the public domain." },
+  { it: "Omofilia", en: "Homophily", cat: "psicologia", defIt: "Propensione naturale degli individui ad associarsi e interagire con persone simili per ideologia, gusti o classe.", defEn: "Natural tendency of individuals to associate and interact with people similar in ideology, tastes or class." },
+  { it: "Euristiche", en: "Heuristics", cat: "psicologia", defIt: "Scorciatoie mentali che il cervello usa per prendere decisioni rapide in un contesto di sovraccarico informativo.", defEn: "Mental shortcuts the brain uses to make quick decisions in an information-overloaded context." },
+  { it: "Agrifake", en: "Agrifake", cat: "agrario", defIt: "Termine accademico che descrive l'universo delle bufale e delle fake news che inquinano il settore agroalimentare.", defEn: "Academic term describing the universe of hoaxes and fake news polluting the agri-food sector." },
+  { it: "Greenwashing", en: "Greenwashing", cat: "agrario", defIt: "Pratica ingannevole di presentarsi come ecologicamente sostenibili senza modificare realmente i propri impatti ambientali.", defEn: "Deceptive practice of presenting oneself as environmentally sustainable without actually changing one's environmental impact." },
+  { it: "OGM", en: "GMO", cat: "agrario", defIt: "Organismo Geneticamente Modificato: essere vivente il cui materiale genetico è stato alterato tramite biotecnologie.", defEn: "Genetically Modified Organism: living organism whose genetic material has been altered through biotechnology." },
+  { it: "TEA", en: "AET", cat: "agrario", defIt: "Tecnologie di Evoluzione Assistita: tecniche genomiche innovative che migliorano le piante sfruttando la variabilità naturale.", defEn: "Assisted Evolution Technologies: innovative genomic techniques that improve plants by harnessing natural variability." },
+  { it: "Metabolomica", en: "Metabolomics", cat: "agrario", defIt: "Analisi scientifica di laboratorio in grado di discriminare migliaia di composti biochimici nelle matrici biologiche.", defEn: "Scientific laboratory analysis capable of discriminating thousands of biochemical compounds in biological matrices." },
+  { it: "Pseudoscienza", en: "Pseudoscience", cat: "agrario", defIt: "Sistema di conoscenze aneddotiche o credenze che mimano il linguaggio della scienza rifuggendo dalla verifica sperimentale.", defEn: "System of anecdotal knowledge or beliefs that mimic scientific language while avoiding experimental verification." },
+  { it: "Ripetibilità", en: "Replicability", cat: "agrario", defIt: "Principio cardine del metodo scientifico: un esperimento deve poter essere replicato da ricercatori indipendenti con gli stessi risultati.", defEn: "Core principle of the scientific method: an experiment must be replicable by independent researchers with the same results." },
+  { it: "Peer review", en: "Peer review", cat: "digitale", defIt: "Revisione critica di un lavoro scientifico da parte di esperti indipendenti del settore, garanzia di qualità accademica.", defEn: "Critical review of scientific work by independent domain experts, a guarantee of academic quality." },
+  { it: "CRAAP Test", en: "CRAAP Test", cat: "digitale", defIt: "Protocollo di analisi delle fonti basato su 5 parametri: Currency, Relevance, Authority, Accuracy, Purpose.", defEn: "Source analysis protocol based on 5 parameters: Currency, Relevance, Authority, Accuracy, Purpose." },
+  { it: "Lettura laterale", en: "Lateral reading", cat: "digitale", defIt: "Strategia di fact-checking che abbandona la fonte sospetta per interrogare fonti terze indipendenti sulla sua reputazione.", defEn: "Fact-checking strategy that leaves the suspicious source to query independent third-party sources about its reputation." },
+  { it: "OSINT", en: "OSINT", cat: "digitale", defIt: "Open Source Intelligence: metodologia di raccolta e analisi di informazioni da fonti pubblicamente disponibili.", defEn: "Open Source Intelligence: methodology of gathering and analysing information from publicly available sources." },
+  { it: "DigComp 2.2", en: "DigComp 2.2", cat: "digitale", defIt: "Quadro europeo delle Competenze Digitali per i Cittadini, con 5 aree e 21 competenze descritte su 8 livelli.", defEn: "European Digital Competence Framework for Citizens, with 5 areas and 21 competences described across 8 levels." },
+  { it: "MIL", en: "MIL", cat: "digitale", defIt: "Media and Information Literacy (UNESCO): insieme di competenze per accedere, valutare e creare contenuti in modo critico.", defEn: "Media and Information Literacy (UNESCO): set of competences to access, evaluate and create content critically." },
+  { it: "Netiquette", en: "Netiquette", cat: "digitale", defIt: "Insieme non scritto di regole di comportamento rispettoso e civile negli spazi di comunicazione online.", defEn: "Unwritten set of rules for respectful and civil behaviour in online communication spaces." },
+  { it: "Algoritmo", en: "Algorithm", cat: "digitale", defIt: "Insieme di istruzioni matematiche che determinano quali contenuti vengono mostrati agli utenti sui social media.", defEn: "Set of mathematical instructions determining which content is shown to users on social media." },
+  { it: "Deepfake", en: "Deepfake", cat: "digitale", defIt: "Contenuto digitale (foto, video, audio) alterato con intelligenza artificiale per far sembrare reale qualcosa di falso.", defEn: "Digital content (photo, video, audio) altered using artificial intelligence to make something false appear real." },
+  { it: "Clickbait", en: "Clickbait", cat: "digitale", defIt: "Titolo sensazionalistico e ingannevole progettato per attirare clic e massimizzare gli introiti pubblicitari.", defEn: "Sensationalistic and misleading headline designed to attract clicks and maximise advertising revenue." },
+  { it: "Rage bait", en: "Rage bait", cat: "digitale", defIt: "Contenuto deliberatamente progettato per provocare indignazione e rabbia, favorendo la condivisione virale.", defEn: "Content deliberately designed to provoke outrage and anger, encouraging viral sharing." },
+  { it: "Cyberbullismo", en: "Cyberbullying", cat: "legale", defIt: "Atti di bullismo perpetrati attraverso mezzi digitali (social, messaggistica, email) con intento di nuocere alla vittima.", defEn: "Bullying acts perpetrated through digital means (social media, messaging, email) with intent to harm the victim." },
+  { it: "Diffamazione", en: "Defamation / Libel", cat: "legale", defIt: "Art. 595 c.p.: offesa all'altrui reputazione comunicata con più persone. Aggravata se commessa via internet.", defEn: "Art. 595 Penal Code: damaging another person's reputation communicated to multiple people. Aggravated if committed online." },
+  { it: "Revenge porn", en: "Revenge porn", cat: "legale", defIt: "Art. 612-ter c.p.: diffusione non consensuale di immagini o video intimi. Il consenso originario non implica consenso alla diffusione.", defEn: "Art. 612-ter: non-consensual sharing of intimate images or videos. Original consent does not imply consent to distribution." },
+  { it: "Imputabilità", en: "Criminal liability", cat: "legale", defIt: "Capacità giuridica di essere sottoposti a processo penale e condannati a una sanzione. In Italia: piena dai 18 anni.", defEn: "Legal capacity to be subject to criminal proceedings and sentenced. In Italy: full from age 18." },
+  { it: "Messa alla prova", en: "Probation (juvenile)", cat: "legale", defIt: "Istituto del diritto minorile: sospensione del processo con affidamento ai servizi sociali. Se superata, il reato si estingue.", defEn: "Juvenile law institution: trial suspension with social services supervision. If successfully completed, the offence is extinguished." },
+  { it: "Ammonimento del Questore", en: "Police Chief's warning", cat: "legale", defIt: "Misura preventiva contro il cyberbullismo: convocazione formale del minore e di un genitore. Mutuata dalla legislazione sullo stalking.", defEn: "Preventive measure against cyberbullying: formal summons of the minor and a parent. Borrowed from stalking legislation." },
+  { it: "Culpa in educando", en: "Parental liability (in educando)", cat: "legale", defIt: "Art. 2048 c.c.: responsabilità civile dei genitori per gli atti illeciti dei figli minori conviventi.", defEn: "Art. 2048 Civil Code: parental civil liability for wrongful acts of cohabiting minor children." },
+  { it: "Culpa in vigilando", en: "Supervisory liability (in vigilando)", cat: "legale", defIt: "Responsabilità civile del docente per i danni causati dagli alunni durante il periodo di sorveglianza.", defEn: "Teacher's civil liability for damages caused by pupils during their supervision period." },
+  { it: "GDPR", en: "GDPR", cat: "legale", defIt: "Regolamento Generale sulla Protezione dei Dati dell'UE: norma fondamentale sulla tutela della privacy digitale.", defEn: "EU General Data Protection Regulation: fundamental rule on the protection of digital privacy." },
+  { it: "Oltraggio a Pubblico Ufficiale", en: "Insult of a Public Official", cat: "legale", defIt: "Art. 341-bis c.p.: reato penale grave applicabile agli insulti rivolti ai docenti (Pubblici Ufficiali) online.", defEn: "Art. 341-bis: serious criminal offence applicable to online insults directed at teachers (Public Officials)." },
+  { it: "Nutriscore", en: "Nutriscore", cat: "agrario", defIt: "Sistema di etichettatura nutrizionale a semaforo che penalizza le eccellenze italiane (vino, olio, formaggi).", defEn: "Traffic-light nutritional labelling system that penalises Italian excellence products (wine, olive oil, cheeses)." },
+  { it: "Made in Italy", en: "Made in Italy", cat: "agrario", defIt: "Prodotti italiani di eccellenza riconosciuti a livello internazionale (DOC, DOCG, DOP, IGP) da tutelare dalla disinformazione.", defEn: "Internationally recognised Italian excellence products (DOC, DOCG, DOP, IGP) to be protected from disinformation." },
+  { it: "PAC", en: "CAP", cat: "agrario", defIt: "Politica Agricola Comune dell'Unione Europea: insieme di norme e incentivi per l'agricoltura nei Paesi UE.", defEn: "Common Agricultural Policy of the European Union: set of rules and incentives for agriculture in EU member states." },
+  { it: "Dieta Mediterranea", en: "Mediterranean Diet", cat: "agrario", defIt: "Patrimonio UNESCO: modello alimentare basato su cereali, legumi, verdure, olio d'oliva, pesce e uso moderato del vino.", defEn: "UNESCO Heritage: dietary model based on cereals, legumes, vegetables, olive oil, fish and moderate wine consumption." },
+  { it: "Big Tech", en: "Big Tech", cat: "digitale", defIt: "Le grandi multinazionali tecnologiche (Meta, Google, Apple, Amazon, Microsoft) che dominano il mercato digitale globale.", defEn: "The large technology multinationals (Meta, Google, Apple, Amazon, Microsoft) that dominate the global digital market." },
+  { it: "Negazionismo climatico", en: "Climate denial", cat: "agrario", defIt: "Posizione ideologica che nega il consenso scientifico sul cambiamento climatico antropogenico, spesso sostenuta da interessi industriali.", defEn: "Ideological position denying scientific consensus on anthropogenic climate change, often backed by industrial interests." },
+  { it: "Fact-checking", en: "Fact-checking", cat: "digitale", defIt: "Processo sistematico di verifica dell'accuratezza e veridicità di affermazioni, notizie o dichiarazioni.", defEn: "Systematic process of verifying the accuracy and truthfulness of claims, news or statements." },
+  { it: "Omessa denuncia", en: "Failure to report", cat: "legale", defIt: "Art. 361 c.p.: reato del Pubblico Ufficiale che omette di denunciare un crimine di cui è venuto a conoscenza per ragione di ufficio.", defEn: "Art. 361: offence by a Public Official who fails to report a crime they became aware of in their official capacity." },
+];
+
+let currentFilter = 'all';
+
+function renderGlossary(data) {
+  const grid = document.getElementById('glossaryGrid');
+  grid.innerHTML = '';
+  if (data.length === 0) {
+    document.getElementById('noResults').style.display = 'block';
+    return;
+  }
+  document.getElementById('noResults').style.display = 'none';
+  data.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'gloss-card';
+    const catIcon = { digitale: '💻', agrario: '🌾', legale: '⚖️', psicologia: '🧠' }[item.cat] || '📌';
+    card.innerHTML = `
+      <div class="gloss-terms">
+        <span class="term-it">🇮🇹 ${item.it}</span>
+        <span class="term-sep">/</span>
+        <span class="term-en">🇬🇧 ${item.en}</span>
+      </div>
+      <div><span class="gloss-cat">${catIcon} ${item.cat}</span></div>
+      <div class="gloss-def-it">${item.defIt}</div>
+      <div class="gloss-def-en">${item.defEn}</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function filterGlossary() {
+  const q = document.getElementById('glossSearch').value.toLowerCase().trim();
+  let filtered = glossaryData;
+  if (currentFilter !== 'all') filtered = filtered.filter(i => i.cat === currentFilter);
+  if (q) filtered = filtered.filter(i => i.it.toLowerCase().includes(q) || i.en.toLowerCase().includes(q) || i.defIt.toLowerCase().includes(q) || i.defEn.toLowerCase().includes(q));
+  renderGlossary(filtered);
+}
+
+function setFilter(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.className = 'filter-btn';
+  });
+  if (cat === 'all') btn.classList.add('active-all');
+  else if (cat === 'digitale') btn.classList.add('active-en');
+  else if (cat === 'agrario') btn.classList.add('active-it');
+  else btn.classList.add('active-en');
+  filterGlossary();
+}
+
+// Initial render
+renderGlossary(glossaryData.sort((a,b) => a.it.localeCompare(b.it)));
+
+/* ====== CHARTS ====== */
+const chartInstances = {};
+
+function isDark() { return document.documentElement.getAttribute('data-theme') === 'dark'; }
+function textColor() { return isDark() ? '#eaeaea' : '#1a1a1a'; }
+function gridColor() { return isDark() ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)'; }
+
+function initCharts() {
+  // Chart 1: Pillar donut
+  const ctx1 = document.getElementById('chartPillar');
+  if (ctx1 && !chartInstances.pillar) {
+    chartInstances.pillar = new Chart(ctx1, {
+      type: 'doughnut',
+      data: {
+        labels: ['Costituzione', 'Sviluppo Sostenibile', 'Cittadinanza Digitale'],
+        datasets: [{ data: [33, 33, 34], backgroundColor: ['#2e7d32','#f57c00','#1565c0'], borderWidth: 3, borderColor: isDark() ? '#242424' : '#fff' }]
+      },
+      options: { responsive: true, plugins: { legend: { labels: { color: textColor(), font: { family:'Titillium Web', size: 12 } } } } }
+    });
+  }
+
+  // Chart 2: DigComp Radar
+  const ctx2 = document.getElementById('chartDigcomp');
+  if (ctx2 && !chartInstances.digcomp) {
+    chartInstances.digcomp = new Chart(ctx2, {
+      type: 'radar',
+      data: {
+        labels: ['Inform. & Dati', 'Comunicaz.', 'Creazione Contenuti', 'Sicurezza', 'Problem Solving'],
+        datasets: [{
+          label: 'Priorità per Agrario',
+          data: [5, 4, 4, 4, 5],
+          backgroundColor: 'rgba(46,125,50,0.25)',
+          borderColor: '#2e7d32',
+          pointBackgroundColor: '#2e7d32',
+          pointRadius: 5
+        }]
+      },
+      options: { responsive: true, scales: { r: { suggestedMin: 0, suggestedMax: 5, ticks: { color: textColor(), stepSize: 1 }, grid: { color: gridColor() }, pointLabels: { color: textColor(), font: { size: 11 } } } }, plugins: { legend: { labels: { color: textColor() } } } }
+    });
+  }
+
+  // Chart 3: Emotion vs Factual
+  const ctx3 = document.getElementById('chartEmotion');
+  if (ctx3 && !chartInstances.emotion) {
+    chartInstances.emotion = new Chart(ctx3, {
+      type: 'bar',
+      data: {
+        labels: ['Notizie di rabbia/paura', 'Notizie di sorpresa', 'Notizie neutre/fattuali', 'Notizie di gioia'],
+        datasets: [{
+          label: 'Probabilità relativa di condivisione',
+          data: [100, 70, 30, 55],
+          backgroundColor: ['#c62828','#f57c00','#2e7d32','#1565c0'],
+          borderRadius: 8
+        }]
+      },
+      options: {
+        responsive: true,
+        indexAxis: 'y',
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: textColor() }, grid: { color: gridColor() }, title: { display: true, text: 'Indice di viralità (emotivo=100)', color: textColor() } },
+          y: { ticks: { color: textColor() }, grid: { color: gridColor() } }
+        }
+      }
+    });
+  }
+
+  // Chart 4: Agrifake targets
+  const ctx4 = document.getElementById('chartAgrifake');
+  if (ctx4 && !chartInstances.agrifake) {
+    chartInstances.agrifake = new Chart(ctx4, {
+      type: 'bar',
+      data: {
+        labels: ['OGM / Biotecnologie','Cambiamento Climatico','Carni e Zootecnia','Pesticidi','Nuovi Alimenti','Vino e Made in Italy','Selvicoltura / Foreste'],
+        datasets: [{
+          label: 'Frequenza di fake news (stima)',
+          data: [95, 88, 82, 78, 65, 55, 45],
+          backgroundColor: ['#c62828','#e65100','#f57c00','#f9a825','#558b2f','#1565c0','#4527a0'],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: textColor() }, grid: { color: gridColor() } },
+          y: { ticks: { color: textColor() }, grid: { color: gridColor() }, title: { display: true, text: 'Intensità relativa (indice)', color: textColor() } }
+        }
+      }
+    });
+  }
+
+  // Chart 5: CRAAP Radar
+  const ctx5 = document.getElementById('chartCraap');
+  if (ctx5 && !chartInstances.craap) {
+    chartInstances.craap = new Chart(ctx5, {
+      type: 'radar',
+      data: {
+        labels: ['Currency (Attualità)', 'Relevance (Rilevanza)', 'Authority (Autorevolezza)', 'Accuracy (Accuratezza)', 'Purpose (Scopo)'],
+        datasets: [
+          { label: 'Fonte scientifica agraria', data: [4,5,5,5,4], backgroundColor: 'rgba(46,125,50,0.2)', borderColor: '#2e7d32', pointBackgroundColor: '#2e7d32' },
+          { label: 'Blog disinformativo tipico', data: [2,3,1,1,4], backgroundColor: 'rgba(198,40,40,0.2)', borderColor: '#c62828', pointBackgroundColor: '#c62828' }
+        ]
+      },
+      options: { responsive: true, scales: { r: { suggestedMin: 0, suggestedMax: 5, ticks: { color: textColor(), stepSize: 1 }, grid: { color: gridColor() }, pointLabels: { color: textColor(), font: { size: 10 } } } }, plugins: { legend: { labels: { color: textColor() } } } }
+    });
+  }
+
+  // Chart 6: Legal responsibility
+  const ctx6 = document.getElementById('chartLegal');
+  if (ctx6 && !chartInstances.legal) {
+    chartInstances.legal = new Chart(ctx6, {
+      type: 'bar',
+      data: {
+        labels: ['< 14 anni', '14-18 anni', '18+ anni'],
+        datasets: [
+          { label: 'Resp. Penale', data: [0, 50, 100], backgroundColor: ['#e8f5e9','#fff3e0','#ffebee'], borderColor: ['#2e7d32','#f57c00','#c62828'], borderWidth: 2, borderRadius: 8 },
+          { label: 'Resp. Civile', data: [0, 30, 100], backgroundColor: ['#c8e6c9','#ffe0b2','#ffcdd2'], borderColor: ['#1b5e20','#e65100','#b71c1c'], borderWidth: 2, borderRadius: 8 }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { labels: { color: textColor() } } },
+        scales: {
+          x: { ticks: { color: textColor() }, grid: { color: gridColor() } },
+          y: { ticks: { color: textColor(), callback: v => v + '%' }, grid: { color: gridColor() }, title: { display: true, text: '% Responsabilità', color: textColor() } }
+        }
+      }
+    });
+  }
+}
+
+function updateChartColors() {
+  Object.values(chartInstances).forEach(chart => {
+    if (!chart) return;
+    const scales = chart.options.scales;
+    if (scales) {
+      ['x','y','r'].forEach(k => {
+        if (scales[k]) {
+          if (scales[k].ticks) scales[k].ticks.color = textColor();
+          if (scales[k].grid) scales[k].grid.color = gridColor();
+          if (scales[k].pointLabels) scales[k].pointLabels.color = textColor();
+          if (scales[k].title) scales[k].title.color = textColor();
+        }
+      });
+    }
+    if (chart.options.plugins?.legend?.labels) {
+      chart.options.plugins.legend.labels.color = textColor();
+    }
+    chart.update();
+  });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  setTimeout(initCharts, 100);
+});
+
+// Re-init charts when switching to their tab
+document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+  btn.addEventListener('click', () => setTimeout(initCharts, 100));
+});
+</script>
+</body>
+</html>
